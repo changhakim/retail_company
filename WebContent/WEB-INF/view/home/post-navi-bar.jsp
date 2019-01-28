@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-				<ul id="navi-bar">
-					<li style = background-color:blue ><a href="home.do">홈으로</a></li>
+				<div class="navi-bar">
+				<ul class="ul_navi_bar">
+					<li ><a href="home.do">홈으로</a></li>
 					<li ><a href="#">카테고리</a></li>
 					<li ><a href="#">사원</a></li>
 					<li ><a href="#">주문</a></li>
@@ -11,5 +11,6 @@
 					<li ><a href="#">공급업체</a></li>
 					
 				</ul>
+				</div>
 			
 

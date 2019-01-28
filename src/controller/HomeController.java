@@ -21,7 +21,9 @@ public class HomeController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
-		session.setAttribute("context", request.getContextPath());	
+		session.setAttribute("ctx", request.getContextPath());	
+		session.setAttribute("css", session.getAttribute("ctx")+"/resources/css/");
+		session.setAttribute("js", session.getAttribute("ctx")+"/resources/js/");
 		EmployeeDTO e = (EmployeeDTO)session.getAttribute("admins");
 		if(e==null) {
 			
