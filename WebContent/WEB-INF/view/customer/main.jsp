@@ -4,33 +4,32 @@
 <jsp:include page="../home/head.jsp"/>
 <body>
 	
-	<table id ="wrapper">
-		
-		<tr id = "first">
-			
-			<td colspan="2">
-				<jsp:include page="../home/header.jsp"/>
-			</td>
-			
-		</tr>
-	
-		<tr>
-			<td colspan="2">
-				
-			</td>
-			
-		</tr>
-		<tr style="height :300px">
-			
-			<td style="width:30%">
-			<jsp:include page="../home/side-menu.jsp"/>
-				
-			</td>
-			<td>
-				
-			</td>
-		</tr>
-	</table>
-	
+<div class="grid-container">
+	<div class="grid-item" id="item1">
+	<jsp:include page="../home/header.jsp"/>
+	</div>
+	<div class="grid-item" id="item2">
+	<c:choose>
+				<c:when test="${compo eq 'pre'}">
+				<jsp:include page="../home/pre-navi-bar.jsp"/>
+				</c:when>
+				<c:otherwise>
+				<jsp:include page="../home/post-navi-bar.jsp"/>
+				</c:otherwise>
+				</c:choose>
+	</div>
+	<div class="grid-item" id="item3">로그인</div>
+	<div class="grid-item" id="item4">
+	<jsp:include page="side-menu.jsp"/>
+	</div>
+	<div class="grid-item" id="item5">
+		<jsp:include page="customer_list.jsp"></jsp:include>
+	</div>
+	<div class="grid-item" id="item6">
+	<jsp:include page="../home/footer.jsp"/>
+	</div>
+</div>
+
+</body>	
 	
 </html>

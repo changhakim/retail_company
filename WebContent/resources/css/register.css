@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+#register-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 1px;
+  background-color: white;
+  padding: 50px;
+  width: 400px;
+  margin: auto;
+  
+  
+   
+}
+#register-container > div {
+  background-color: white;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 15px;
+  height: 40px;
+  
+}
+#register-container > div >input{
+margin-top: 10px
+}
+.re1 {
+grid-column-start:1; 
+grid-column-end:2;
+}
+.re2 {
+grid-column-start:2; 
+grid-column-end:5;
+
+}
+.re3 {
+grid-column-start:1; 
+grid-column-end:3;
+}
+.re4 {
+grid-column-start:3; 
+grid-column-end:5;
+}

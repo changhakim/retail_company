@@ -19,6 +19,12 @@ public class EmployeeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	EmployeeService service = EmployeeServiceImpl.getInstance();
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("사번:"+request.getParameter("employeeID"));
+		System.out.println("이름:"+request.getParameter("name"));
+		System.out.println("매니져:"+request.getParameter("manager"));
+		System.out.println("생일:"+request.getParameter("birthDate"));
+		System.out.println("사번:"+request.getParameter("notes"));
+		request.getRequestDispatcher("/WEB-INF/view/employee/main.jsp").forward(request, response);
 		
 	}
 

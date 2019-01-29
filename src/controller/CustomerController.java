@@ -17,7 +17,7 @@ public class CustomerController extends HttpServlet {
        
    CustomerService service = CustomerServiceImpl.getInstance();
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		request.getRequestDispatcher("/WEB-INF/view/customer/main.jsp").forward(request, response);
 	}
 
 	
