@@ -17,8 +17,17 @@ public class CustomerController extends HttpServlet {
        
    CustomerService service = CustomerServiceImpl.getInstance();
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/view/customer/main.jsp").forward(request, response);
-	}
+		String page = request.getParameter("page");
+		String cmd = request.getParameter("cmd");
+		int a = request.getServletPath().indexOf(".");
+		String dir = request.getServletPath().substring(1,a);
+		
+		switch(cmd) {
+		case "move":
+		request.getRequestDispatcher("/WEB-INF/view/"+dir+"/"+page+".jsp").forward(request, response);
+		break;
+		}
+		}
 
 	
 }

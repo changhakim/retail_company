@@ -1,45 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<style>
-  table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-th, td {
-  padding: 5px;
-}
-th {
-  text-align: left;
-}
-
-.center {
-  text-align: center;
-}
-
-.pagination {
-  display: inline-block;
-}
-
-.pagination a {
-  color: black;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
-  transition: background-color .3s;
-  border: 1px solid #ddd;
-  margin: 0 4px;
-}
-
-.pagination a.active {
-  background-color: #4CAF50;
-  color: white;
-  border: 1px solid #4CAF50;
-}
-
-.pagination a:hover:not(.active) {background-color: #ddd;}
-
-  </style>
-
+<jsp:include page="../home/top.jsp"/>
+<link rel="stylesheet" href="${css}/customer/customer_list.css" />
+<div class="grid-item" id="navi_bar">
+<ul class="ul_navi_bar">
+					<li ><a href="home.do">홈으로</a></li>
+					<li ><a href="#">카테고리</a></li>
+					<li ><a href="#">사원</a></li>
+					<li ><a href="#">주문</a></li>
+					<li ><a href="#">상품</a></li>
+					<li ><a href="#">선박</a></li>
+					<li ><a href="#">공급업체</a></li>
+					
+				</ul>
+</div>
+<div class="grid-item" id="side_bar">
+<h1>사원등록</h1>
+</div>
+<div class="grid-item" id="content">
 <table style="width:100%">
   <tr>
     <th>NO.</th>
@@ -78,4 +56,6 @@ th {
   <a href="#">&raquo;</a>
   </div>
 </div>
+</div>
+<jsp:include page="../home/bottom.jsp"/>
     

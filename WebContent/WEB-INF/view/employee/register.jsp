@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-
-
+<jsp:include page="../home/top.jsp"/>
+<link rel="stylesheet" href="${css}/employee/register.css" />
+<div class="grid-item" id= "side_bar">
 <h1>사원등록</h1>
-	
+</div>
+	<div class="grid-item" id= "content">
 	<form id="register_form" >
 	<div id="register-container">
 	<div class="re1">사원번호</div>
@@ -19,12 +21,18 @@
 	<div class="re2"><input type="text" id="desc" name="notes" /> </div>
 	<div class="re3"><input type="submit" id = "confirm_btn" value="확인" /></div>
 	<div class="re4"><input type="submit" id = "cancel_btn" value="취소" /> </div>	
+	
+	<input type="hidden" name="cmd" value="move"/>
+	<input type="hidden" name="page" value="access"/>
+	
 		
 	</div>
 	</form>
+	</div>
+	
 
 
-
+<jsp:include page="../home/bottom.jsp"></jsp:include>
 <script>
 $('#confirm_btn').click(function(){
 	
