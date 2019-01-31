@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class Carrier {
+	
 	public static void forward(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("=======6.캐리어진입=======");
-		request.getRequestDispatcher(Receiver.cmd.getView()).forward(request, response);
 		
+		request.getRequestDispatcher(Receiver.cmd.view).forward(request, response);
 	}
 }

@@ -3,7 +3,7 @@
 	
 
 	<jsp:include page="../home/top.jsp"/>
-	<link rel="stylesheet" href="${css}/home/register.css" />
+	<link rel="stylesheet" href="${css}/employee/register.css" />
 	<div class="grid-item" id= "side_bar">
 	<h1>사원접속</h1>
 	</div>

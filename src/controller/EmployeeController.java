@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import command.Carrier;
 import command.Receiver;
+import domain.EmployeeDTO;
 import enums.Action;
 import service.EmployeeService;
 import service.EmployeeServiceImpl;
@@ -23,7 +24,6 @@ public class EmployeeController extends HttpServlet {
 	EmployeeService service = EmployeeServiceImpl.getInstance();
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		System.out.println("=======1.컨트롤러 진입=======");
 		Receiver.init(request, response);
 		
 		switch (Action.valueOf(Receiver.cmd.getAction().toUpperCase())) {
@@ -31,10 +31,23 @@ public class EmployeeController extends HttpServlet {
 			Carrier.forward(request, response);
 			break;
 
-		default:
+		case REGISTER:
+			System.out.println("레지스터들어옴");
+			EmployeeDTO emp = new EmployeeDTO();
+			emp.setName(request.getParameter("name"));
+			emp.setManager(request.getParameter("manager"));
+			emp.setNotes(request.getParameter("notes"));
+			emp.setPhoto(request.getParameter("photo"));
+			emp.setBirthDate(request.getParameter("birthDate"));
+			service.registEmployee(emp);
+			Carrier.forward(request, response);
+			
+			
+			
+			
 			break;
 		}
-	
+		
 	}
 
 	

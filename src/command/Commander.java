@@ -5,13 +5,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import enums.Action;
 
-public class Commander {
-	public static Command order(HttpServletRequest request,HttpServletResponse response) {
+public class commander {
+	
+	public static Command order(HttpServletRequest request, HttpServletResponse response) {
 		Command cmd = null;
-		System.out.println("=======3.커맨더진입=======");
 		switch (Action.valueOf(request.getParameter("cmd").toUpperCase())) {
 		case MOVE:
-			cmd = new MoveCommand(request,response);
+			System.out.println("커멘더들어옴");
+			cmd = new CommandMove(request, response);
+			break;
+		case REGISTER:
+			cmd = new CommandMove(request, response);
 			break;
 
 		default:

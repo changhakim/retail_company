@@ -9,8 +9,7 @@
 	<div class="grid-item" id= "content">
 	<form id="register_form" >
 	<div id="register-container">
-	<div class="re1">사원번호</div>
-	<div class="re2"><input type="text" id="empno"  name="employeeID" /></div>
+	
 	<div class="re1">이름</div>
 	<div class="re2"><input type="text" id="name" name="name" /></div>
 	<div class="re1">매니저</div>
@@ -18,11 +17,14 @@
 	<div class="re1">생년월일</div>
 	<div class="re2"><input type="text" id="birthDate" name="birthDate" /></div>
 	<div class="re1">상세</div>
-	<div class="re2"><input type="text" id="desc" name="notes" /> </div>
+	<div class="re2"><input type="text" id="notes" name="notes" /> </div>
+	<div class="re1">사진</div>
+	<div class="re2"><input type="text" id="photo" name="photo" /> </div>
+	
 	<div class="re3"><input type="submit" id = "confirm_btn" value="확인" /></div>
 	<div class="re4"><input type="submit" id = "cancel_btn" value="취소" /> </div>	
 	
-	<input type="hidden" name="cmd" value="move"/>
+	<input type="hidden" name="cmd" value="register"/>
 	<input type="hidden" name="page" value="access"/>
 	
 		
