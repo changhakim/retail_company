@@ -2,7 +2,6 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.List;
 
 import domain.EmployeeDTO;
@@ -21,8 +20,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 	public void insertEmployee(EmployeeDTO emp) {
 		try {
 			
-			String sql = String.format(EmployeeSQL.REGISTER.toString(),emp.getManager(),emp.getName()
-					,emp.getBirthDate(),emp.getPhoto(),emp.getNotes());
+			String sql = String.format(EmployeeSQL.REGISTER.toString());
 			System.out.println("실행할 쿼리:"+sql);
 	Connection conn = DatabaseFactory
 			.createDatabase(Vendor.ORACLE)

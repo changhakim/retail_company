@@ -7,6 +7,7 @@ public class Receiver {
 	public static Command cmd = new Command();
 	public static void init(HttpServletRequest request, HttpServletResponse response) {
 		
-		cmd = commander.order(request, response);
+		cmd = Commander.order(request, response);
+		System.out.println(cmd.getAction()+"리시버겟액션");
 	}
 }
