@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="${css}/reset.css "/>
 <link rel="stylesheet" href="${css}/global.css" />
 
+
 <link href="https://fonts.googleapis.com/css?family=Cute+Font|East+Sea+Dokdo|Jua|Nanum+Brush+Script&amp;subset=korean" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Hi+Melody" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

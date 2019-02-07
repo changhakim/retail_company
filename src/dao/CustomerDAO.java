@@ -11,7 +11,7 @@ public interface CustomerDAO {
 	public List<CustomerDTO> selectCustomers(String searchWord);
 	public CustomerDTO selectCustomer(String searchWord);
 	public int countCustomers();
-	public String existCustomer(String serachWord);
+	public CustomerDTO existCustomer(CustomerDTO cus);
 	
 	
 	public void updateCustomer(CustomerDTO customer);

@@ -4,7 +4,7 @@
 .grid-container {
   display: grid;
 
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: auto auto auto auto auto auto;
   
   background-color: white;
   grid-gap: 4px;
@@ -22,7 +22,7 @@
 }
 #header{
 	grid-column-start: 1;
-	grid-column-end: 5;
+	grid-column-end: 7;
 	padding-top: 20px;
 	padding-bottom: 20px;
 	font-size:50px;
@@ -30,7 +30,7 @@
 }
 #navi_bar {
 	grid-column-start: 1;
-	grid-column-end: 5;
+	grid-column-end: 7;
 	padding-top: 20px;
 	padding-bottom: 20px;
 	font-family: 'Jua', sans-serif;
@@ -38,15 +38,15 @@
 	
 }
 #item3 {
-	grid-column-start: 4;
-	grid-column-end: 5;
+	grid-column-start: 3;
+	grid-column-end: 7;
 	padding-top: 30px;
 	padding-bottom: 30px;
 }
 #side_bar {
 
 	grid-column-start: 1;
-	grid-column-end: 2;
+	grid-column-end: 3;
 	display: grid;
 	grid-template-rows: 300px;
 	font-size: 20px;
@@ -54,8 +54,8 @@
 	
 }
 #content {
-	grid-column-start: 2;
-	grid-column-end: 5;
+	grid-column-start: 3;
+	grid-column-end: 7;
 	font-size: 30px;
 	
  	font-family: 'Nanum Brush Script', cursive;
@@ -70,7 +70,7 @@ font-family: 'Hi Melody', cursive;
 }
 #footer {
 	grid-column-start: 1;
-	grid-column-end: 5;
+	grid-column-end: 7;
 }
 
 
@@ -84,13 +84,17 @@ font-family: 'Hi Melody', cursive;
 
 .main1 {
   grid-column-start: 1;
-  grid-column-end: 3;
+  grid-column-end: 4;
 }
 
 .main2 {
-  grid-column-start: 3;
-  grid-column-end: 5;
+  grid-column-start: 4;
+  grid-column-end: 7;
 }
+
+/*카테고리 메인*/
+
+
 /* 네비바===================== */
 .ul_navi_bar{
  		list-style-type: none;

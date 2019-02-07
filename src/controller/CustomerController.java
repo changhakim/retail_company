@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import command.Carrier;
+import command.Receiver;
 import service.CustomerService;
 import service.CustomerServiceImpl;
 
@@ -17,17 +19,13 @@ public class CustomerController extends HttpServlet {
        
    CustomerService service = CustomerServiceImpl.getInstance();
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String page = request.getParameter("page");
-		String cmd = request.getParameter("cmd");
-		int a = request.getServletPath().indexOf(".");
-		String dir = request.getServletPath().substring(1,a);
+
 		
-		switch(cmd) {
-		case "move":
-		request.getRequestDispatcher("/WEB-INF/view/"+dir+"/"+page+".jsp").forward(request, response);
-		break;
-		}
-		}
+		Receiver.init(request, response);
+		
+		Carrier.forward(request, response);
+	
+	}
 
 	
 }

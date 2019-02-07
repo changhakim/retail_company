@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.List;
 
 import domain.EmployeeDTO;
@@ -23,8 +24,8 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 			String sql = String.format(EmployeeSQL.REGISTER.toString());
 			System.out.println("실행할 쿼리:"+sql);
 	Connection conn = DatabaseFactory
-			.createDatabase(Vendor.ORACLE)
-			.getConnection();
+					  .createDatabase(Vendor.ORACLE)
+					  .getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, emp.getManager());
 			pstmt.setString(2, emp.getName());
@@ -65,9 +66,29 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 	}
 
 	@Override
-	public String existsEmployee(String searchWord) {
-		// TODO Auto-generated method stub
-		return null;
+	public EmployeeDTO existsEmployee(EmployeeDTO emp) {
+		EmployeeDTO emp1 = null;
+		
+		try {
+			String sql = String.format(EmployeeSQL.ACCESS.toString());
+			PreparedStatement pstmt =	DatabaseFactory.
+										createDatabase(Vendor.ORACLE).
+										getConnection().
+										prepareStatement(sql);
+					pstmt.setString(1, emp.getEmployeeID());
+					pstmt.setString(2, emp.getName());
+					ResultSet rs = pstmt.executeQuery();
+					System.out.println("다오아이디"+emp.getEmployeeID());
+					while(rs.next()){
+						emp1 = new EmployeeDTO();
+						emp1.setEmployeeID(rs.getString("EMPLOYEE_ID"));
+						emp1.setName(rs.getString("NAME"));
+					}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return emp1;
 	}
 
 	@Override

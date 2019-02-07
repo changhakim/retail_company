@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+/* 홈메인==================== */
+
+
+.camain1 {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  background-image: url(http://d3qpgbf7vej5yf.cloudfront.net/wp-content/uploads/2018/09/apple-iphone-xs-quick-review-10.jpg);
+  background-size : contain;
+  display: grid;
+  grid-template-rows: 300px;
+  font-size:30px;
+  font-family: 'Nanum Brush Script', cursive;
+}
+
+.camain2 {
+  grid-column-start: 3;
+  grid-column-end: 5;
+  font-family: 'Nanum Brush Script', cursive;
+}
+.camain3{
+	grid-column-start: 5;
+  grid-column-end: 7;
+  font-family: 'Nanum Brush Script', cursive;
+ 
+}

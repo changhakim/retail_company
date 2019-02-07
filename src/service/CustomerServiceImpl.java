@@ -19,7 +19,7 @@ public class CustomerServiceImpl implements CustomerService{
 
 	@Override
 	public void registCustomer(CustomerDTO customer) {
-		// TODO Auto-generated method stub
+		dao.insertCustomer(customer);
 		
 	}
 
@@ -48,9 +48,14 @@ public class CustomerServiceImpl implements CustomerService{
 	}
 
 	@Override
-	public boolean existCustomer(String serachWord) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean existCustomer(CustomerDTO cus) {
+	CustomerDTO cus1 = dao.existCustomer(cus);
+		System.out.println("로그인들어옴");
+		boolean ok = true;
+		if(cus1 == null) {
+			ok = false;
+		}
+		return ok;
 	}
 
 	@Override

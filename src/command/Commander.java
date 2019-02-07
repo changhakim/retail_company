@@ -14,13 +14,17 @@ public class Commander {
 			System.out.println("커멘더들어옴");
 			cmd = new Command(request,response);
 			break;
-		case REGISTER:
+		case REGISTER : case CUSREGISTER :
 			cmd = new CreateCommand(request, response);
 			break;
-
-		default:
+		
+		case ACCESS : case CUSACCESS :
+			System.out.println("커맨더ACCESS들어옴");
+			cmd = new ExistCommand(request, response);
 			break;
+		
 		}
+		System.out.println("커맨더 내부"+Receiver.cmd.getView());
 		return cmd;
 	}
 }

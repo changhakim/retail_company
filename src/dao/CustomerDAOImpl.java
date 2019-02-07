@@ -1,8 +1,14 @@
 package dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.List;
 
 import domain.CustomerDTO;
+import enums.CustomerSQL;
+import enums.Vendor;
+import factory.DatabaseFactory;
 
 public class CustomerDAOImpl  implements CustomerDAO{
 
@@ -13,7 +19,26 @@ public class CustomerDAOImpl  implements CustomerDAO{
 
 	@Override
 	public void insertCustomer(CustomerDTO customer) {
-		// TODO Auto-generated method stub
+		try {
+		
+			String sql = CustomerSQL.CUSREGISTER.toString();
+			Connection conn	=	DatabaseFactory.
+								createDatabase(Vendor.ORACLE).
+								getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+							pstmt.setString(1, customer.getCustomerID());
+							pstmt.setString(2, customer.getCustomerName());
+							pstmt.setString(3, customer.getPassword());
+							pstmt.setString(4, customer.getAddress());
+							pstmt.setString(5, customer.getCity());
+							pstmt.setString(6, customer.getPostalCode());
+							pstmt.setString(7, customer.getSsn());
+				pstmt.executeUpdate();	
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
@@ -42,9 +67,32 @@ public class CustomerDAOImpl  implements CustomerDAO{
 	}
 
 	@Override
-	public String existCustomer(String serachWord) {
-		// TODO Auto-generated method stub
-		return null;
+	public CustomerDTO existCustomer(CustomerDTO cus) {
+		
+		CustomerDTO cus1 = null;
+		try {
+			String sql = CustomerSQL.CUSACCESS.toString();
+			
+		PreparedStatement pstmt	= DatabaseFactory
+								  .createDatabase(Vendor.ORACLE)
+								  .getConnection()
+								  .prepareStatement(sql);
+		pstmt.setString(1, cus.getCustomerID());
+		pstmt.setString(2, cus.getPassword());
+		ResultSet rs = pstmt.executeQuery();
+		System.out.println("rs:::"+ rs);
+		while(rs.next()) {
+			 cus1 = new CustomerDTO();
+			cus1.setCustomerID(rs.getString("CUSTOMER_ID"));
+			cus1.setPassword(rs.getString("PASSWORD"));
+		}
+		
+		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return cus1;
 	}
 
 	@Override

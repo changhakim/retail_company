@@ -25,22 +25,7 @@ public class EmployeeController extends HttpServlet {
 	
 		Receiver.init(request, response);
 		
-		switch (Action.valueOf(Receiver.cmd.getAction().toUpperCase())) {
-		case MOVE:
-			Carrier.forward(request, response);
-			break;
-
-		case REGISTER:
-			System.out.println("컨트롤러 들어왔어");
-			
-			Carrier.forward(request, response);
-			
-			
-			
-			
-			break;
-		}
-		
+		Carrier.forward(request, response);
 	}
 
 	
