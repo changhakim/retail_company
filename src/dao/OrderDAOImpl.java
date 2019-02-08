@@ -5,9 +5,10 @@ import java.util.List;
 import domain.OrderDTO;
 
 public class OrderDAOImpl implements OrderDAO{
-	private static OrderDAO instance = new OrderDAOImpl();
+	private static OrderDAOImpl instance = new OrderDAOImpl();
 	private OrderDAOImpl() {}
-	public static OrderDAO getInstance() {return instance;}
+	public static OrderDAOImpl getInstance() {return instance;}
+
 
 
 	@Override

@@ -8,12 +8,12 @@ public enum CustomerSQL {
 		StringBuffer query = new StringBuffer();
 		switch (this) {
 		case CUSREGISTER:
-			query.append("INSERT INTO CUSTOMERS(CUSTOMER_ID,CUSTOMER_NAME,PASSWORD,ADDRESS,CITY,POSTALCODE,SSN)\r\n" + 
+			query.append("INSERT INTO CUSTOMERS(CUSTOMER_ID,CUSTOMER_NAME,PASSWORD,ADDRESS,CITY,POSTALCODE,SSN)\n" + 
 					"VALUES (?,?,?,?,?,?,?)");
 			break;
 
 		case CUSACCESS:
-			query.append("SELECT CUSTOMER_ID,PASSWORD FROM CUSTOMERS WHERE CUSTOMER_ID LIKE ? AND  PASSWORD LIKE ?");
+			query.append("SELECT * FROM CUSTOMERS WHERE CUSTOMER_ID LIKE ? AND  PASSWORD LIKE ?");
 			
 			break;
 		default:

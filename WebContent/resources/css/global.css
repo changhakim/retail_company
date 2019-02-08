@@ -85,11 +85,13 @@ font-family: 'Hi Melody', cursive;
 .main1 {
   grid-column-start: 1;
   grid-column-end: 4;
+  font-family: 'Cute Font', cursive;
 }
 
 .main2 {
   grid-column-start: 4;
   grid-column-end: 7;
+  font-family: 'Cute Font', cursive;
 }
 
 /*카테고리 메인*/
@@ -129,4 +131,14 @@ li a.active {
 li a:hover:not(.active) {
   background-color: #555;
   color: white;
+}
+
+/* 카테고리메인===================== */
+
+#catecontent {
+	  grid-column-start: 1;
+  	  grid-column-end: 7;
+  	  font-size: 20px;
+  	  font-family: 'Hi Melody', cursive;
+	
 }

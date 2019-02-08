@@ -3,20 +3,37 @@
 	
 
 	<jsp:include page="../home/top.jsp"/>
-	<link rel="stylesheet" href="${css}/employee/register.css" />
-	<div class="grid-item" id= "side_bar">
-	<h1>회원접속</h1>
-	</div>
-	<div class="grid-item" id= "content">
+	
+	
+	<div class="grid-item" id= "catecontent">
 	<h1 id="title">회원 전용 시스템</h1>
 	<form id="access_form" >
 	<div id="register-container">
-	<div class="re1">아이디</div>
-	<div class="re2"><input type="text" id="cusID" name="cusID" value="hoho" /></div>
-	<div class="re1">비밀번호</div>
-	<div class="re2"><input type="text" id="password" name="password" value="123123" /></div>
-	<div class="re3"><input type="submit" id = "confirm_btn" value="확인" /></div>
-	<div class="re4"><input type="submit" id = "cancel_btn" value="취소" /> </div>
+
+	
+
+	
+	
+	
+
+    
+	
+ 	  <div class="input-group input-group-lg">
+	  <span class="input-group-addon" id="sizing-addon3">아이디</span>
+	  <input type="text" class="form-control" placeholder="아이디를 입력하세요" aria-describedby="sizing-addon3" id="cusID" name="cusID" value="hoho">
+      </div>
+
+
+	  <div class="input-group input-group-lg">
+      <span class="input-group-addon" id="sizing-addon3">비밀번호</span>
+      <input type="text" class="form-control" placeholder="비밀번호를 입력하세요" aria-describedby="sizing-addon3" id="password" name="password" value="123123">
+      </div>
+	  <button type="button" class="btn  btn-warning btn-large" id = "confirm_btn" >
+	  <span class="glyphicon glyphicon-tint" aria-hidden="true"></span> SIGNIN
+	  </button> 
+	
+
+	
 	<input type="hidden" name="cmd" value="cusaccess" />	
 	<input type="hidden" name="dir" value="category" />
 	<input type="hidden" name="page" value="main" />

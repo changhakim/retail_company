@@ -7,18 +7,18 @@ import dao.OrderDAOImpl;
 import domain.OrderDTO;
 
 public class OrderServiceImpl implements OrderService {
-	private static OrderService instance = new OrderServiceImpl();
+	private static OrderServiceImpl instance = new OrderServiceImpl();
 	private OrderServiceImpl() {
 		dao = OrderDAOImpl.getInstance();
 	}
-	public static OrderService getInstance() {return instance;}
+	public static OrderServiceImpl getInstance() {return instance;}
 	
 	OrderDAO dao;
 
 
 	@Override
 	public void registOrders(OrderDTO order) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

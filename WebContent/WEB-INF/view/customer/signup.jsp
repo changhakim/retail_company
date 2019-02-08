@@ -2,31 +2,50 @@
 	pageEncoding="UTF-8"%>
 
 <jsp:include page="../home/top.jsp"/>
-<link rel="stylesheet" href="${css}/employee/register.css" />
+
 <div class="grid-item" id= "side_bar">
-<h1>사원등록</h1>
+<h1>회원등록</h1>
 </div>
 	<div class="grid-item" id= "content">
 	<form id="register_form" >
 	<div id="register-container">
 	
-	<div class="re1">아이디</div>
-	<div class="re2"><input type="text" id="cusID" name="cusID" /></div>
-	<div class="re1">이름</div>
-	<div class="re2"><input type="text" id="cusname" name="cusname" /></div>
-	<div class="re1">비밀번호</div>
-	<div class="re2"><input type="text" id="password" name="password" /></div>
-	<div class="re1">Address</div>
-	<div class="re2"><input type="text" id="address" name="address" /> </div>
-	<div class="re1">CITY</div>
-	<div class="re2"><input type="text" id="city" name="city" /> </div>
-	<div class="re1">PostalCode</div>
-	<div class="re2"><input type="text" id="postalcode" name="postalcode" /> </div>
-	<div class="re1">주민등록번호</div>
-	<div class="re2"><input type="text" id="ssn" name="ssn" /> </div>
 	
-	<div class="re3"><input type="submit" id = "confirm_btn" value="확인" /></div>
-	<div class="re4"><input type="submit" id = "cancel_btn" value="취소" /> </div>	
+					<div class="input-group input-group-lg">
+				  	<span class="input-group-addon" id="sizing-addon3">아이디</span>
+				    <input type="text" class="form-control" placeholder="4자리이상 알파벳 숫자" aria-describedby="sizing-addon3" id="cusID" name="cusID">
+				    </div>
+					<div class="input-group input-group-lg">
+				  	<span class="input-group-addon" id="sizing-addon3">비밀번호</span>
+				  	<input type="text" class="form-control" placeholder="4자리이상" aria-describedby="sizing-addon3" id="password" name="password">
+					</div>
+					<div class="input-group input-group-lg">
+				 	<span class="input-group-addon" id="sizing-addon3">이름</span>
+				  	<input type="text" class="form-control" placeholder="한글" aria-describedby="sizing-addon3" id="cusname" name="cusname">
+					</div>
+					<div class="input-group input-group-lg">
+				  	<span class="input-group-addon" id="sizing-addon3">Address</span>
+				  	<input type="text" class="form-control" placeholder="주소" aria-describedby="sizing-addon3" id="address" name="address">
+					</div>
+					<div class="input-group input-group-lg">
+				  	<span class="input-group-addon" id="sizing-addon3">CITY</span>
+				  	<input type="text" class="form-control" placeholder="예.광주" aria-describedby="sizing-addon3" id="city" name="city">
+					</div>
+					<div class="input-group input-group-lg">
+				  	<span class="input-group-addon" id="sizing-addon3">postalcode</span>
+				  	<input type="text" class="form-control" placeholder="예.158-15" aria-describedby="sizing-addon3" id="postalcode" name="postalcode">
+					</div>
+					<div class="input-group input-group-lg">
+				  	<span class="input-group-addon" id="sizing-addon3">주민등록번호</span>
+				  	<input type="text" class="form-control" placeholder="예.901215-" aria-describedby="sizing-addon3" id="ssn" name="ssn" >
+					</div>
+					
+				<button type="button" class="btn btn-default btn-lg" id = "confirm_btn" >
+				<span class="glyphicon glyphicon-tint" aria-hidden="true"></span> JOIN
+				</button>
+				<button type="button" class="btn btn-default btn-lg" id = "cancel_btn" >
+				<span class="glyphicon glyphicon-tint" aria-hidden="true"></span> CANCEL
+				</button>
 	
 	<input type="hidden" name="cmd" value="cusregister"/>
 	<input type="hidden" name="page" value="signin"/>

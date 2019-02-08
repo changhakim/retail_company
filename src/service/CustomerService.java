@@ -11,9 +11,9 @@ public interface CustomerService {
 	
 	public List<CustomerDTO> bringCustomerList();
 	public List<CustomerDTO> retrieveCustomers(String searchWord);
-	public CustomerDTO retrieveCustomer(String searchWord);
+	public CustomerDTO retrieveCustomer(CustomerDTO cus);
 	public int countCustomers();
-	public boolean existCustomer(CustomerDTO cus);
+	public boolean existCustomerID(CustomerDTO cus);
 	
 	
 	public void modifyCustomer(CustomerDTO customer);

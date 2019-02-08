@@ -2,6 +2,7 @@ package command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import domain.CustomerDTO;
 import domain.EmployeeDTO;
@@ -14,6 +15,7 @@ public class ExistCommand extends Command {
 	public ExistCommand(HttpServletRequest request, HttpServletResponse response) {
 		
 		super(request, response);
+		HttpSession session = request.getSession();
 		
 		switch (Action.valueOf(request.getParameter("cmd").toUpperCase())) {
 		case ACCESS:
@@ -38,12 +40,14 @@ public class ExistCommand extends Command {
 			CustomerDTO cus = new CustomerDTO();
 			cus.setCustomerID(request.getParameter("cusID"));
 			cus.setPassword(request.getParameter("password"));
-			boolean exist1 = CustomerServiceImpl.getInstance().existCustomer(cus);
-			if(exist1) {
+			cus = CustomerServiceImpl.getInstance().retrieveCustomer(cus);
+			
+			if(!(cus==null)) {
 				System.out.println("커스엑세스로그인성공");
+				session.setAttribute("customer", cus);
 			}else {
-				super.setDomain("home");
-				super.setPage("main");
+				super.setDomain("customer");
+				super.setPage("signin");
 				super.execute();
 			}
 			

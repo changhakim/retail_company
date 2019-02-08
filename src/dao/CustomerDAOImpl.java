@@ -3,6 +3,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import domain.CustomerDTO;
@@ -55,9 +56,32 @@ public class CustomerDAOImpl  implements CustomerDAO{
 	}
 
 	@Override
-	public CustomerDTO selectCustomer(String searchWord) {
-		// TODO Auto-generated method stub
-		return null;
+	public CustomerDTO selectCustomer(CustomerDTO cus) {
+		CustomerDTO cus1 = null;
+		try {
+			
+			PreparedStatement ps =	DatabaseFactory
+			.createDatabase(Vendor.ORACLE)
+			.getConnection()
+			.prepareStatement(CustomerSQL.CUSACCESS.toString());
+			ps.setString(1, cus.getCustomerID());
+			ps.setString(2, cus.getPassword());
+			ResultSet rs =  ps.executeQuery();
+			while(rs.next()) {
+				cus1 = new CustomerDTO();
+				cus1.setAddress(rs.getString("ADDRESS"));
+				cus1.setCustomerID(rs.getString("CUSTOMER_ID"));
+				cus1.setCity(rs.getString("CITY"));
+				cus1.setSsn(rs.getString("SSN"));
+				cus1.setCustomerName(rs.getString("CUSTOMER_NAME"));
+			}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return cus1;
 	}
 
 	@Override
@@ -67,7 +91,7 @@ public class CustomerDAOImpl  implements CustomerDAO{
 	}
 
 	@Override
-	public CustomerDTO existCustomer(CustomerDTO cus) {
+	public CustomerDTO existCustomerID(CustomerDTO cus) {
 		
 		CustomerDTO cus1 = null;
 		try {

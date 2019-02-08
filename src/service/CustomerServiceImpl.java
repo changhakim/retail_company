@@ -36,9 +36,10 @@ public class CustomerServiceImpl implements CustomerService{
 	}
 
 	@Override
-	public CustomerDTO retrieveCustomer(String searchWord) {
-		// TODO Auto-generated method stub
-		return null;
+	public CustomerDTO retrieveCustomer(CustomerDTO cus) {
+		
+		CustomerDTO cus1 =  dao.selectCustomer(cus);
+		return cus1;
 	}
 
 	@Override
@@ -48,8 +49,8 @@ public class CustomerServiceImpl implements CustomerService{
 	}
 
 	@Override
-	public boolean existCustomer(CustomerDTO cus) {
-	CustomerDTO cus1 = dao.existCustomer(cus);
+	public boolean existCustomerID(CustomerDTO cus) {
+	CustomerDTO cus1 = dao.existCustomerID(cus);
 		System.out.println("로그인들어옴");
 		boolean ok = true;
 		if(cus1 == null) {
