@@ -3,7 +3,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import domain.CustomerDTO;
@@ -30,10 +30,11 @@ public class CustomerDAOImpl  implements CustomerDAO{
 							pstmt.setString(1, customer.getCustomerID());
 							pstmt.setString(2, customer.getCustomerName());
 							pstmt.setString(3, customer.getPassword());
-							pstmt.setString(4, customer.getAddress());
-							pstmt.setString(5, customer.getCity());
-							pstmt.setString(6, customer.getPostalCode());
-							pstmt.setString(7, customer.getSsn());
+							pstmt.setString(4, customer.getSsn());
+							pstmt.setString(5, customer.getPhone());
+							pstmt.setString(6, customer.getCity());
+							pstmt.setString(7, customer.getAddress());
+							pstmt.setString(8, customer.getPostalCode());
 				pstmt.executeUpdate();	
 			
 		} catch (Exception e) {
@@ -45,8 +46,50 @@ public class CustomerDAOImpl  implements CustomerDAO{
 
 	@Override
 	public List<CustomerDTO> selectCustomerList() {
-		// TODO Auto-generated method stub
-		return null;
+		List<CustomerDTO> list = new ArrayList<>();
+		try {
+			String sql = CustomerSQL.LIST.toString();
+			PreparedStatement ps = DatabaseFactory
+								   .createDatabase(Vendor.ORACLE)
+								   .getConnection()
+								   .prepareStatement(sql);
+		ResultSet rs =	ps.executeQuery();
+		CustomerDTO cust = null;
+			while(rs.next()) {
+				 
+				cust = new CustomerDTO();
+				cust.setCustomerID(rs.getString("CUSTOMER_ID"));
+				cust.setCustomerName(rs.getString("CUSTOMER_NAME"));
+				cust.setSsn(rs.getString("SSN"));
+				switch (cust.getSsn().charAt(7)) {
+				case '1': case'3':
+					cust.setGender("남");
+					
+					break;
+				case '2': case'4':
+					cust.setGender("여");
+					break;
+				
+				default:
+					break;
+				}
+				
+				cust.setPhone(rs.getString("PHONE"));
+				cust.setCity(rs.getString("CITY"));
+				cust.setAddress(rs.getString("ADDRESS"));
+				cust.setPostalCode(rs.getString("POSTALCODE"));
+				list.add(cust);
+				
+				
+			}
+			
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("리스트0번째"+list.get(0).getCustomerName());
+		return list;
 	}
 
 	@Override

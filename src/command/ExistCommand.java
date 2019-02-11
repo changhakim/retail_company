@@ -1,5 +1,7 @@
 package command;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -26,6 +28,11 @@ public class ExistCommand extends Command {
 			boolean exist = EmployeeServiceImpl.getInstance().existsEmployee(emp);
 			if(exist) {
 				System.out.println("접속성공");
+				 
+			List<CustomerDTO> list = CustomerServiceImpl.getInstance().bringCustomerList();
+			
+			request.setAttribute("list", list);
+				
 			}else {
 				System.out.println("접속실패");
 				super.setDomain("home");

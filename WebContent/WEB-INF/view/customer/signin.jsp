@@ -26,7 +26,7 @@
 
 	  <div class="input-group input-group-lg">
       <span class="input-group-addon" id="sizing-addon3">비밀번호</span>
-      <input type="text" class="form-control" placeholder="비밀번호를 입력하세요" aria-describedby="sizing-addon3" id="password" name="password" value="123123">
+      <input type="text" class="form-control" placeholder="비밀번호를 입력하세요" aria-describedby="sizing-addon3" id="password" name="password" value="1234">
       </div>
 	  <button type="button" class="btn  btn-warning btn-large" id = "confirm_btn" >
 	  <span class="glyphicon glyphicon-tint" aria-hidden="true"></span> SIGNIN

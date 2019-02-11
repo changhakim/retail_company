@@ -55,6 +55,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 			pstmt.setString(1, null);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
+				
 				list.add(null);
 			}
 		} catch (SQLException e) {

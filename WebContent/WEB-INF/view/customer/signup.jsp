@@ -24,12 +24,16 @@
 				  	<input type="text" class="form-control" placeholder="한글" aria-describedby="sizing-addon3" id="cusname" name="cusname">
 					</div>
 					<div class="input-group input-group-lg">
-				  	<span class="input-group-addon" id="sizing-addon3">Address</span>
-				  	<input type="text" class="form-control" placeholder="주소" aria-describedby="sizing-addon3" id="address" name="address">
+				  	<span class="input-group-addon" id="sizing-addon3">PHONE</span>
+				  	<input type="text" class="form-control" placeholder="010-XXXX-XXXX" aria-describedby="sizing-addon3" id="phone" name="phone">
 					</div>
 					<div class="input-group input-group-lg">
-				  	<span class="input-group-addon" id="sizing-addon3">CITY</span>
-				  	<input type="text" class="form-control" placeholder="예.광주" aria-describedby="sizing-addon3" id="city" name="city">
+				  	<span class="input-group-addon" id="sizing-addon3">주소</span>
+				  	<input type="text" class="form-control" placeholder="예.서울특별시 종로구 xxxx" aria-describedby="sizing-addon3" id="city" name="city">
+					</div>
+					<div class="input-group input-group-lg">
+				  	<span class="input-group-addon" id="sizing-addon3">상세주소</span>
+				  	<input type="text" class="form-control" placeholder="예 xx아파트xx동xx호" aria-describedby="sizing-addon3" id="address" name="address">
 					</div>
 					<div class="input-group input-group-lg">
 				  	<span class="input-group-addon" id="sizing-addon3">postalcode</span>
