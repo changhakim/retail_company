@@ -22,7 +22,8 @@ public class Commander {
 			System.out.println("커맨더ACCESS들어옴");
 			cmd = new ExistCommand(request, response);
 			break;
-		
+		case CUST_LIST:
+			cmd = new ListCommand(request, response);
 		}
 		System.out.println("커맨더 내부"+Receiver.cmd.getView());
 		return cmd;

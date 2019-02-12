@@ -1,7 +1,7 @@
 package enums;
 
 public enum CustomerSQL {
-	CUSREGISTER,CUSACCESS,LIST;
+	CUSREGISTER,CUSACCESS,LIST,COUNT;
 	
 	@Override
 	public String toString() {
@@ -17,7 +17,15 @@ public enum CustomerSQL {
 			
 			break;
 		case LIST:
-			query.append("SELECT * FROM CUSTOMERS");
+			query.append("SELECT d.*\n" + 
+						 "FROM (SELECT ROWNUM no, C.*\n" + 
+						 		"FROM CUSTOMERS C\n" + 
+						 		"ORDER BY NO DESC)d\n" + 
+						 "WHERE no between ? and ?");
+			break;
+		case COUNT:
+			query.append("SELECT COUNT(*) COUNT\n" + 
+						"FROM CUSTOMERS");
 		default:
 			break;
 		}

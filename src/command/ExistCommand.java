@@ -9,6 +9,8 @@ import javax.servlet.http.HttpSession;
 import domain.CustomerDTO;
 import domain.EmployeeDTO;
 import enums.Action;
+import proxy.Pagination;
+import proxy.Proxy;
 import service.CustomerServiceImpl;
 import service.EmployeeServiceImpl;
 
@@ -21,20 +23,23 @@ public class ExistCommand extends Command {
 		
 		switch (Action.valueOf(request.getParameter("cmd").toUpperCase())) {
 		case ACCESS:
-			System.out.println("익지스트들어옴");
+			
 			EmployeeDTO emp = new EmployeeDTO();
 			emp.setEmployeeID(request.getParameter("empno"));
 			emp.setName(request.getParameter("name"));
 			boolean exist = EmployeeServiceImpl.getInstance().existsEmployee(emp);
 			if(exist) {
-				System.out.println("접속성공");
-				 
-			List<CustomerDTO> list = CustomerServiceImpl.getInstance().bringCustomerList();
+				
+				
+				
+				
+			
+			List<CustomerDTO> list = CustomerServiceImpl.getInstance().bringCustomerList(new Proxy().getPage());
 			
 			request.setAttribute("list", list);
 				
 			}else {
-				System.out.println("접속실패");
+				
 				super.setDomain("home");
 				super.setPage("main");
 				super.execute();
@@ -50,7 +55,7 @@ public class ExistCommand extends Command {
 			cus = CustomerServiceImpl.getInstance().retrieveCustomer(cus);
 			
 			if(!(cus==null)) {
-				System.out.println("커스엑세스로그인성공");
+				
 				session.setAttribute("customer", cus);
 			}else {
 				super.setDomain("customer");

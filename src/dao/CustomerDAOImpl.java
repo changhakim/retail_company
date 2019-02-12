@@ -3,13 +3,16 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import domain.CustomerDTO;
+import enums.Action;
 import enums.CustomerSQL;
 import enums.Vendor;
 import factory.DatabaseFactory;
+import proxy.Pagination;
 
 public class CustomerDAOImpl  implements CustomerDAO{
 
@@ -45,7 +48,7 @@ public class CustomerDAOImpl  implements CustomerDAO{
 	}
 
 	@Override
-	public List<CustomerDTO> selectCustomerList() {
+	public List<CustomerDTO> selectCustomerList(Pagination page) {
 		List<CustomerDTO> list = new ArrayList<>();
 		try {
 			String sql = CustomerSQL.LIST.toString();
@@ -53,13 +56,19 @@ public class CustomerDAOImpl  implements CustomerDAO{
 								   .createDatabase(Vendor.ORACLE)
 								   .getConnection()
 								   .prepareStatement(sql);
+			
+			ps.setString(1, page.getStartRow());
+			ps.setString(2, page.getEndRow());
+		
 		ResultSet rs =	ps.executeQuery();
+		
 		CustomerDTO cust = null;
 			while(rs.next()) {
 				 
 				cust = new CustomerDTO();
 				cust.setCustomerID(rs.getString("CUSTOMER_ID"));
 				cust.setCustomerName(rs.getString("CUSTOMER_NAME"));
+				cust.setNo(rs.getString("NO"));
 				cust.setSsn(rs.getString("SSN"));
 				switch (cust.getSsn().charAt(7)) {
 				case '1': case'3':
@@ -88,7 +97,7 @@ public class CustomerDAOImpl  implements CustomerDAO{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("리스트0번째"+list.get(0).getCustomerName());
+		
 		return list;
 	}
 
@@ -128,9 +137,23 @@ public class CustomerDAOImpl  implements CustomerDAO{
 	}
 
 	@Override
-	public int countCustomers() {
-		// TODO Auto-generated method stub
-		return 0;
+	public String countCustomers() {
+		String count = "";
+		try {
+			String sql = CustomerSQL.COUNT.toString();
+		PreparedStatement ps = DatabaseFactory.createDatabase(Vendor.ORACLE)
+								.getConnection()
+								.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()) {
+			count = rs.getString("COUNT");
+		}
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		return count;
 	}
 
 	@Override

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+    
 <jsp:include page="../home/top.jsp"/>
 <link rel="stylesheet" href="${css}/customer/customer_list.css" />
 <div class="grid-item" id="navi_bar">
@@ -20,7 +20,7 @@
 <h1>고객목록</h1>
 </div>
 <div class="grid-item" id="content">
-<table style="width:100%">
+<table style="margin:auto">
   <tr>
    	<th>NO.</th> 
     <th>아이디</th> 
@@ -41,7 +41,7 @@
  
   <tr>
     
-   	<td>${fn:length(list)-status.index}</td>
+   	<td>${cust.no}</td>
     <td>${cust.customerID}</td>
     <td>${cust.customerName}</td>
     <td>${cust.ssn}</td>
@@ -58,16 +58,69 @@
 
 <div class="center">
   <div class="pagination">
-  <a href="#">&laquo;</a>
-  <a href="#">1</a>
-  <a href="#" class="active">2</a>
-  <a href="#">3</a>
-  <a href="#">4</a>
-  <a href="#">5</a>
-  <a href="#">6</a>
+  <a href="#" >&laquo;</a>
+  <a id ="1_btn" href="#" class="active">1</a>
+  <a id ="2_btn" href="#">2</a>
+  <a id ="3_btn" href="#" >3</a>
+  <a id ="4_btn" href="#">4</a>
+  <a id ="5_btn" href="#">5</a>
+  <a id ="6_btn" href="#">6</a>
+  <a id ="7_btn" href="#">7</a>
   <a href="#">&raquo;</a>
   </div>
 </div>
 </div>
 <jsp:include page="../home/bottom.jsp"/>
+
+<script>
+$('#1_btn').click(function(){
+	
+	location.assign('${ctx}/customer.do?cmd=cust_list&page=customer_list&page_num=1&page_size=5')
+	// page_num,pageSize,cmd,dir,page
+	// ?cmd=list&page=list&page_num=2&page_size=5
+
+});
+$('#2_btn').click(function(){
+	
+	location.assign('${ctx}/customer.do?cmd=cust_list&page=customer_list&page_num=2&page_size=5')
+	// page_num,pageSize,cmd,dir,page
+	// ?cmd=list&page=list&page_num=2&page_size=5
+
+});
+$('#3_btn').click(function(){
+	
+	location.assign('${ctx}/customer.do?cmd=cust_list&page=customer_list&page_num=3&page_size=5')
+	// page_num,pageSize,cmd,dir,page
+	// ?cmd=list&page=list&page_num=2&page_size=5
+
+});
+$('#4_btn').click(function(){
+	
+	location.assign('${ctx}/customer.do?cmd=cust_list&page=customer_list&page_num=4&page_size=5')
+	// page_num,pageSize,cmd,dir,page
+	// ?cmd=list&page=list&page_num=2&page_size=5
+
+});
+$('#5_btn').click(function(){
+	
+	location.assign('${ctx}/customer.do?cmd=cust_list&page=customer_list&page_num=5&page_size=5')
+	// page_num,pageSize,cmd,dir,page
+	// ?cmd=list&page=list&page_num=2&page_size=5
+
+});
+$('#6_btn').click(function(){
+	
+	location.assign('${ctx}/customer.do?cmd=cust_list&page=customer_list&page_num=6&page_size=5')
+	// page_num,pageSize,cmd,dir,page
+	// ?cmd=list&page=list&page_num=2&page_size=5
+
+});
+$('#7_btn').click(function(){
+	
+	location.assign('${ctx}/customer.do?cmd=cust_list&page=customer_list&page_num=7&page_size=5')
+	// page_num,pageSize,cmd,dir,page
+	// ?cmd=list&page=list&page_num=2&page_size=5
+
+});
+</script>
     
