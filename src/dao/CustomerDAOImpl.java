@@ -3,16 +3,16 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import domain.CustomerDTO;
-import enums.Action;
 import enums.CustomerSQL;
 import enums.Vendor;
 import factory.DatabaseFactory;
+import proxy.PageProxy;
 import proxy.Pagination;
+import proxy.Proxy;
 
 public class CustomerDAOImpl  implements CustomerDAO{
 
@@ -48,17 +48,18 @@ public class CustomerDAOImpl  implements CustomerDAO{
 	}
 
 	@Override
-	public List<CustomerDTO> selectCustomerList(Pagination page) {
+	public List<CustomerDTO> selectCustomerList(Proxy pxy) {
 		List<CustomerDTO> list = new ArrayList<>();
 		try {
 			String sql = CustomerSQL.LIST.toString();
+			Pagination page = ((PageProxy)pxy).getPage();
 			PreparedStatement ps = DatabaseFactory
 								   .createDatabase(Vendor.ORACLE)
 								   .getConnection()
 								   .prepareStatement(sql);
 			
-			ps.setString(1, page.getStartRow());
-			ps.setString(2, page.getEndRow());
+			ps.setInt(1, page.getStartRow());
+			ps.setInt(2, page.getEndRow());
 		
 		ResultSet rs =	ps.executeQuery();
 		
@@ -102,7 +103,7 @@ public class CustomerDAOImpl  implements CustomerDAO{
 	}
 
 	@Override
-	public List<CustomerDTO> selectCustomers(String searchWord) {
+	public List<CustomerDTO> selectCustomers(Proxy pxy) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -137,7 +138,7 @@ public class CustomerDAOImpl  implements CustomerDAO{
 	}
 
 	@Override
-	public String countCustomers() {
+	public String countCustomers(Proxy pxy) {
 		String count = "";
 		try {
 			String sql = CustomerSQL.COUNT.toString();

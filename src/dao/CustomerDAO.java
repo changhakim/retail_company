@@ -4,14 +4,15 @@ import java.util.List;
 
 import domain.CustomerDTO;
 import proxy.Pagination;
+import proxy.Proxy;
 
 public interface CustomerDAO {
 	public void insertCustomer(CustomerDTO customer);
 	
-	public List<CustomerDTO> selectCustomerList(Pagination page);
-	public List<CustomerDTO> selectCustomers(String searchWord);
+	public List<CustomerDTO> selectCustomerList(Proxy pxy);
+	public List<CustomerDTO> selectCustomers(Proxy pxy);
 	public CustomerDTO selectCustomer(CustomerDTO cus);
-	public String countCustomers();
+	public String countCustomers(Proxy pxy);
 	public CustomerDTO existCustomerID(CustomerDTO cus);
 	
 	

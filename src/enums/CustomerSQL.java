@@ -17,11 +17,13 @@ public enum CustomerSQL {
 			
 			break;
 		case LIST:
-			query.append("SELECT d.*\n" + 
-						 "FROM (SELECT ROWNUM no, C.*\n" + 
-						 		"FROM CUSTOMERS C\n" + 
-						 		"ORDER BY NO DESC)d\n" + 
-						 "WHERE no between ? and ?");
+			
+			query.append("SELECT D1.*\n" + 
+						"FROM (SELECT ROWNUM NO1,D.*\n" + 
+							  "FROM (SELECT ROWNUM NO, C.*\n" + 
+							  		 "FROM CUSTOMERS C\n" + 
+							  		 "ORDER BY no desc) D)D1\n" + 
+						"WHERE NO1 BETWEEN ? AND ?");
 			break;
 		case COUNT:
 			query.append("SELECT COUNT(*) COUNT\n" + 

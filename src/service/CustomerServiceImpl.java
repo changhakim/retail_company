@@ -6,6 +6,7 @@ import dao.CustomerDAO;
 import dao.CustomerDAOImpl;
 import domain.CustomerDTO;
 import proxy.Pagination;
+import proxy.Proxy;
 
 public class CustomerServiceImpl implements CustomerService{
 
@@ -25,13 +26,13 @@ public class CustomerServiceImpl implements CustomerService{
 	}
 
 	@Override
-	public List<CustomerDTO> bringCustomerList(Pagination page) {
-		List<CustomerDTO> list = dao.selectCustomerList(page);
+	public List<CustomerDTO> bringCustomerList(Proxy pxy) {
+		List<CustomerDTO> list = dao.selectCustomerList(pxy);
 		return list;
 	}
 
 	@Override
-	public List<CustomerDTO> retrieveCustomers() {
+	public List<CustomerDTO> retrieveCustomers(Proxy pxy) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -44,8 +45,8 @@ public class CustomerServiceImpl implements CustomerService{
 	}
 
 	@Override
-	public String countCustomers() {
-		String a = dao.countCustomers();
+	public String countCustomers(Proxy pxy) {
+		String a = dao.countCustomers(pxy);
 		return a;
 	}
 

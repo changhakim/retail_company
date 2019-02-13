@@ -59,13 +59,9 @@
 <div class="center">
   <div class="pagination">
   <a href="#" >&laquo;</a>
-  <a id ="1_btn" href="#" class="active">1</a>
-  <a id ="2_btn" href="#">2</a>
-  <a id ="3_btn" href="#" >3</a>
-  <a id ="4_btn" href="#">4</a>
-  <a id ="5_btn" href="#">5</a>
-  <a id ="6_btn" href="#">6</a>
-  <a id ="7_btn" href="#">7</a>
+  <c:forEach begin="1" end="5" varStatus="status">
+  <a id ="1_btn" href="#">$(status.count)</a>
+  </c:forEach>
   <a href="#">&raquo;</a>
   </div>
 </div>
@@ -73,6 +69,7 @@
 <jsp:include page="../home/bottom.jsp"/>
 
 <script>
+// class="active"
 $('#1_btn').click(function(){
 	
 	location.assign('${ctx}/customer.do?cmd=cust_list&page=customer_list&page_num=1&page_size=5')
@@ -80,47 +77,6 @@ $('#1_btn').click(function(){
 	// ?cmd=list&page=list&page_num=2&page_size=5
 
 });
-$('#2_btn').click(function(){
-	
-	location.assign('${ctx}/customer.do?cmd=cust_list&page=customer_list&page_num=2&page_size=5')
-	// page_num,pageSize,cmd,dir,page
-	// ?cmd=list&page=list&page_num=2&page_size=5
 
-});
-$('#3_btn').click(function(){
-	
-	location.assign('${ctx}/customer.do?cmd=cust_list&page=customer_list&page_num=3&page_size=5')
-	// page_num,pageSize,cmd,dir,page
-	// ?cmd=list&page=list&page_num=2&page_size=5
-
-});
-$('#4_btn').click(function(){
-	
-	location.assign('${ctx}/customer.do?cmd=cust_list&page=customer_list&page_num=4&page_size=5')
-	// page_num,pageSize,cmd,dir,page
-	// ?cmd=list&page=list&page_num=2&page_size=5
-
-});
-$('#5_btn').click(function(){
-	
-	location.assign('${ctx}/customer.do?cmd=cust_list&page=customer_list&page_num=5&page_size=5')
-	// page_num,pageSize,cmd,dir,page
-	// ?cmd=list&page=list&page_num=2&page_size=5
-
-});
-$('#6_btn').click(function(){
-	
-	location.assign('${ctx}/customer.do?cmd=cust_list&page=customer_list&page_num=6&page_size=5')
-	// page_num,pageSize,cmd,dir,page
-	// ?cmd=list&page=list&page_num=2&page_size=5
-
-});
-$('#7_btn').click(function(){
-	
-	location.assign('${ctx}/customer.do?cmd=cust_list&page=customer_list&page_num=7&page_size=5')
-	// page_num,pageSize,cmd,dir,page
-	// ?cmd=list&page=list&page_num=2&page_size=5
-
-});
 </script>
     
