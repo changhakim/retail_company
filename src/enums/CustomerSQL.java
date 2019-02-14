@@ -1,7 +1,7 @@
 package enums;
 
 public enum CustomerSQL {
-	CUSREGISTER,CUSACCESS,LIST,COUNT;
+	CUSREGISTER,CUSACCESS,LIST,COUNT,PHONE;
 	
 	@Override
 	public String toString() {
@@ -28,6 +28,10 @@ public enum CustomerSQL {
 		case COUNT:
 			query.append("SELECT COUNT(*) COUNT\n" + 
 						"FROM CUSTOMERS");
+			break;
+		case PHONE :
+			query.append("SELECT CUSTOMER_ID,CUSTOMER_NAME ,PHONE\n" + 
+						"FROM CUSTOMERS\n");
 		default:
 			break;
 		}

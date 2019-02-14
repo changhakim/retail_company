@@ -41,6 +41,7 @@ public class ExistCommand extends Command {
 			List<CustomerDTO> list = CustomerServiceImpl.getInstance().bringCustomerList(pagePxy);
 			
 			request.setAttribute("list", list);
+			request.setAttribute("pagination", paging);
 				
 			}else {
 				

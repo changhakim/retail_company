@@ -58,11 +58,17 @@
 
 <div class="center">
   <div class="pagination">
-  <a href="#" >&laquo;</a>
-  <c:forEach begin="1" end="5" varStatus="status">
-  <a id ="1_btn" href="#">$(status.count)</a>
+  <c:if test="${pagination.existPrev}">
+  		<a href="${ctx}/customer.do?cmd=cust_list&page=customer_list&page_size=5&page_num=${pagination.prevBlock}" >&laquo;</a>
+  </c:if>
+  
+  <c:forEach begin="${pagination.startpage}" end="${pagination.endpage}" varStatus="status">
+  		<a class ="pagec" href="#">${status.index}</a>
   </c:forEach>
-  <a href="#">&raquo;</a>
+  
+  	<c:if test="${pagination.existNext}">
+  		<a href="${ctx}/customer.do?cmd=cust_list&page=customer_list&page_size=5&page_num=${pagination.nextBlock}">&raquo;</a>
+  	</c:if>
   </div>
 </div>
 </div>
@@ -70,9 +76,16 @@
 
 <script>
 // class="active"
-$('#1_btn').click(function(){
+$('.pagec').each(function(index){
+$(this).click(function(){
+		location.assign('${ctx}/customer.do?cmd=cust_list&page=customer_list&page_size=5&page_num='+$(this).text())
+	});
+$('.prev').click(function(){
 	
-	location.assign('${ctx}/customer.do?cmd=cust_list&page=customer_list&page_num=1&page_size=5')
+	
+})
+	
+	
 	// page_num,pageSize,cmd,dir,page
 	// ?cmd=list&page=list&page_num=2&page_size=5
 

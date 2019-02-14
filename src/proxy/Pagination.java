@@ -20,7 +20,10 @@ public class Pagination implements Proxy{
 		this.pageNum =(requst.getParameter("page_num")==null)?1:Integer.parseInt(requst.getParameter("page_num"));
 		this.pageSize =(requst.getParameter("page_size")==null)?5:Integer.parseInt(requst.getParameter("page_size"));
 		this.totalCount = Integer.parseInt(CustomerServiceImpl.getInstance().countCustomers(null));
+		
+		
 		System.out.println("총갯수"+totalCount);
+		
 		
 		
 		
@@ -32,15 +35,29 @@ public class Pagination implements Proxy{
 		/*this.endRow = (totalCount-((pageSize*pageNum))+pageSize);*/
 		int pageCount = totalCount/pageSize;
 		if(totalCount%pageSize!=0) {
-			pageCount = pageCount++;
+			pageCount++;
 		}
 		this.startRow = pageSize*(pageNum-1)+1;
 		this.endRow = pageNum * pageSize;
 		endRow = (totalCount > endRow)?endRow:totalCount;
-		/*this.startRow =(totalCount-((pageSize*pageNum)-1)<=0)?1:totalCount-((pageSize*pageNum)-1);
-		this.endRow = (totalCount-(pageSize*pageNum)+pageSize);*/
-		
 		this.blockSize =(requst.getParameter("blocksize")==null)?5:Integer.parseInt(requst.getParameter("blocksize"));
 		
+		
+		this.existPrev = (pageNum<=blockSize)?false:true;
+		if(existPrev) {
+			startpage = ((pageNum-1)/blockSize)*blockSize+1;
+		}else {
+			startpage = 1;
+		}
+		this.existNext = (startpage+pageSize)>=pageCount?false:true;
+		endpage = startpage + 4;
+		if(endpage>pageCount) {
+			endpage = pageCount;
+		
+		}
+		prevBlock = startpage - pageSize;
+		nextBlock = startpage + pageSize;
+		
 	}
-}
+	}
+

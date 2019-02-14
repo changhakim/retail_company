@@ -1,6 +1,7 @@
 package service;
 
 import java.util.List;
+import java.util.Map;
 
 import dao.CustomerDAO;
 import dao.CustomerDAOImpl;
@@ -71,6 +72,11 @@ public class CustomerServiceImpl implements CustomerService{
 	public void removeCustomer(CustomerDTO customer) {
 		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public Map<String, Object> retrievePhone(Proxy pxy) {
+		
+		return dao.selectPhone(pxy);
 	}
 
 }

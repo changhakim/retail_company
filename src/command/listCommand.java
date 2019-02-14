@@ -28,6 +28,7 @@ public ListCommand(Map<String, Proxy> pxy) {
 		pagePxy.carryOut(paging);
 		List<CustomerDTO> list = CustomerServiceImpl.getInstance().bringCustomerList(pagePxy);
 		request.setAttribute("list", list);
+		request.setAttribute("pagination", paging);
 		
 		break;
 		
