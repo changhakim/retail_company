@@ -41,8 +41,8 @@ public class CustomerServiceImpl implements CustomerService{
 	@Override
 	public CustomerDTO retrieveCustomer(CustomerDTO cus) {
 		
-		CustomerDTO cus1 =  dao.selectCustomer(cus);
-		return cus1;
+		
+		return dao.selectCustomer(cus);
 	}
 
 	@Override

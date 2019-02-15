@@ -31,7 +31,12 @@ public class Commander {
 			break;
 		case CUST_LIST:
 			cmd = new ListCommand(pxy);
+		break;
+		case CUST_RETRIEVE:
+			cmd = new RetrieveCommand(pxy);
+			break;
 		}
+		
 		System.out.println("커맨더 내부"+Receiver.cmd.getView());
 		return cmd;
 	}

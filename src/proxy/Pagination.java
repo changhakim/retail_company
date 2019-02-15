@@ -44,11 +44,8 @@ public class Pagination implements Proxy{
 		
 		
 		this.existPrev = (pageNum<=blockSize)?false:true;
-		if(existPrev) {
-			startpage = ((pageNum-1)/blockSize)*blockSize+1;
-		}else {
-			startpage = 1;
-		}
+		
+		startpage = ((pageNum-1)/blockSize)*blockSize+1;
 		this.existNext = (startpage+pageSize)>=pageCount?false:true;
 		endpage = startpage + 4;
 		if(endpage>pageCount) {

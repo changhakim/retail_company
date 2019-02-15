@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="${css}/customer/customer_list.css" />
 <div class="grid-item" id="navi_bar">
 <ul class="ul_navi_bar">
+					
 					<li ><a href="home.do">홈으로</a></li>
 					<li ><a href="#">카테고리</a></li>
 					<li ><a href="#">사원</a></li>
@@ -43,7 +44,7 @@
     
    	<td>${cust.no}</td>
     <td>${cust.customerID}</td>
-    <td>${cust.customerName}</td>
+    <td><a href="${ctx}/customer.do?cmd=cust_retrieve&page=detail&customerID=${cust.customerID}">${cust.customerName}</a></td>
     <td>${cust.ssn}</td>
     <td>${cust.gender}</td>
     <td>${cust.phone}</td>
@@ -63,7 +64,15 @@
   </c:if>
   
   <c:forEach begin="${pagination.startpage}" end="${pagination.endpage}" varStatus="status">
+  		<c:choose>
+  		<c:when test="${pagination.pageNum eq status.index}">
+  		<a class ="pagec active" href="#">${status.index}</a>
+  		</c:when>
+  		<c:otherwise>
   		<a class ="pagec" href="#">${status.index}</a>
+  		</c:otherwise>
+  		</c:choose>
+  		
   </c:forEach>
   
   	<c:if test="${pagination.existNext}">

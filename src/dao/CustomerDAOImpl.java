@@ -114,28 +114,54 @@ public class CustomerDAOImpl  implements CustomerDAO{
 	public CustomerDTO selectCustomer(CustomerDTO cus) {
 		CustomerDTO cus1 = null;
 		try {
+			String sql = "";
+			if(cus.getPassword()==null) {
+				sql = CustomerSQL.RETRIEVE.toString();
+			}else {
+				sql = CustomerSQL.CUSACCESS.toString();
+			}
 			
 			PreparedStatement ps =	DatabaseFactory
 			.createDatabase(Vendor.ORACLE)
 			.getConnection()
-			.prepareStatement(CustomerSQL.CUSACCESS.toString());
-			ps.setString(1, cus.getCustomerID());
-			ps.setString(2, cus.getPassword());
+			.prepareStatement(sql);
+			if(cus.getPassword()==null) {
+				ps.setString(1, cus.getCustomerID());
+			}else {
+				ps.setString(1, cus.getCustomerID());
+				ps.setString(2, cus.getPassword());
+			}
+			
 			ResultSet rs =  ps.executeQuery();
 			while(rs.next()) {
 				cus1 = new CustomerDTO();
 				cus1.setAddress(rs.getString("ADDRESS"));
 				cus1.setCustomerID(rs.getString("CUSTOMER_ID"));
 				cus1.setCity(rs.getString("CITY"));
-				cus1.setSsn(rs.getString("SSN"));
+				cus1.setPostalCode(rs.getString("POSTALCODE"));
 				cus1.setCustomerName(rs.getString("CUSTOMER_NAME"));
+				cus1.setPhone(rs.getString("PHONE"));
+				cus1.setSsn(rs.getString("SSN"));
+				switch (cus1.getSsn().charAt(7)) {
+				case '1': case'3':
+					
+					cus1.setGender("남");
+					
+					break;
+				case '2': case'4':
+					cus1.setGender("여");
+					break;
+				
+				default:
+					break;
+				}
 			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		System.out.println("=========커스토머아이드 dao++++++"+cus1.getSsn());
 		return cus1;
 	}
 
