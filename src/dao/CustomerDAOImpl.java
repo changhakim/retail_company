@@ -3,6 +3,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -113,13 +114,16 @@ public class CustomerDAOImpl  implements CustomerDAO{
 	@Override
 	public CustomerDTO selectCustomer(CustomerDTO cus) {
 		CustomerDTO cus1 = null;
+		System.out.println(cus.getPassword()+"DAO비밀번호");
 		try {
 			String sql = "";
+			
 			if(cus.getPassword()==null) {
 				sql = CustomerSQL.RETRIEVE.toString();
 			}else {
 				sql = CustomerSQL.CUSACCESS.toString();
 			}
+			System.out.println(cus.getPassword()+"DAO비밀번호트라이캐치안");
 			
 			PreparedStatement ps =	DatabaseFactory
 			.createDatabase(Vendor.ORACLE)
@@ -136,6 +140,7 @@ public class CustomerDAOImpl  implements CustomerDAO{
 			while(rs.next()) {
 				cus1 = new CustomerDTO();
 				cus1.setAddress(rs.getString("ADDRESS"));
+				cus1.setPassword(rs.getString("PASSWORD"));
 				cus1.setCustomerID(rs.getString("CUSTOMER_ID"));
 				cus1.setCity(rs.getString("CITY"));
 				cus1.setPostalCode(rs.getString("POSTALCODE"));
@@ -161,7 +166,7 @@ public class CustomerDAOImpl  implements CustomerDAO{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("=========커스토머아이드 dao++++++"+cus1.getSsn());
+		
 		return cus1;
 	}
 
@@ -216,7 +221,26 @@ public class CustomerDAOImpl  implements CustomerDAO{
 
 	@Override
 	public void updateCustomer(CustomerDTO customer) {
-		// TODO Auto-generated method stub
+		CustomerDTO cus = null;
+		try {
+			String sql = CustomerSQL.UPDATE.toString();
+		PreparedStatement ps = DatabaseFactory
+							  .createDatabase(Vendor.ORACLE)
+							  .getConnection()
+							  .prepareStatement(sql);
+		ps.setString(1, customer.getPassword());
+		ps.setString(2, customer.getPhone());
+		ps.setString(3, customer.getCity());
+		ps.setString(4, customer.getAddress());
+		ps.setString(5, customer.getPostalCode());
+		ps.setString(6, customer.getCustomerID());
+		ps.executeUpdate();
+		
+		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 

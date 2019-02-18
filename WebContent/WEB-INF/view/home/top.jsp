@@ -22,7 +22,7 @@
 <body>
 <div class="grid-container container-fluid"  >
 <div class="grid-item" id="header">
-<h1>비트 쇼핑몰</h1>
+<h1>비트 트레이더</h1>
 </div>
 
 

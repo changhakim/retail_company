@@ -44,7 +44,7 @@
     
    	<td>${cust.no}</td>
     <td>${cust.customerID}</td>
-    <td><a href="${ctx}/customer.do?cmd=cust_retrieve&page=detail&customerID=${cust.customerID}">${cust.customerName}</a></td>
+    <td><a href="${ctx}/customer.do?cmd=cust_retrieve&page=detail&customer_id=${cust.customerID}">${cust.customerName}</a></td>
     <td>${cust.ssn}</td>
     <td>${cust.gender}</td>
     <td>${cust.phone}</td>

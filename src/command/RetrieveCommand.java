@@ -20,7 +20,7 @@ public class RetrieveCommand extends Command{
 		CustomerDTO cus = new CustomerDTO();
 		
 		
-		cus.setCustomerID(request.getParameter("customerID"));
+		cus.setCustomerID(request.getParameter("customer_id"));
 		cus = CustomerServiceImpl.getInstance().retrieveCustomer(cus);
 		request.setAttribute("cust", cus);
 	}

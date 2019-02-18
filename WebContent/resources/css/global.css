@@ -144,3 +144,9 @@ li a:hover:not(.active) {
   	  font-family: 'Hi Melody', cursive;
 	
 }
+/* 디테일 수정 =======*/
+.update{
+		  grid-column-start: 1;
+  	  	  grid-column-end: 3;
+ 		  height:20px;
+ }

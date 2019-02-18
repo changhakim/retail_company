@@ -41,7 +41,7 @@ public class CustomerServiceImpl implements CustomerService{
 	@Override
 	public CustomerDTO retrieveCustomer(CustomerDTO cus) {
 		
-		
+		System.out.println("서비스아이디"+cus.getCustomerID());
 		return dao.selectCustomer(cus);
 	}
 
@@ -64,8 +64,8 @@ public class CustomerServiceImpl implements CustomerService{
 
 	@Override
 	public void modifyCustomer(CustomerDTO customer) {
-		// TODO Auto-generated method stub
 		
+		 dao.updateCustomer(customer);
 	}
 
 	@Override

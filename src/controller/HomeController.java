@@ -23,6 +23,7 @@ public class HomeController extends HttpServlet {
 		session.setAttribute("ctx", request.getContextPath());	
 		session.setAttribute("css", session.getAttribute("ctx")+"/resources/css/");
 		session.setAttribute("js", session.getAttribute("ctx")+"/resources/js/");
+		session.setAttribute("img", session.getAttribute("ctx")+"/resources/img/");
 		EmployeeDTO e = (EmployeeDTO)session.getAttribute("admins");
 		if(e==null) {
 			

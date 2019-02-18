@@ -35,6 +35,8 @@ public class Commander {
 		case CUST_RETRIEVE:
 			cmd = new RetrieveCommand(pxy);
 			break;
+		case DETAIL_UPDATE:
+			cmd = new UbdateCommand(pxy);
 		}
 		
 		System.out.println("커맨더 내부"+Receiver.cmd.getView());
