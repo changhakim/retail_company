@@ -13,9 +13,11 @@ public class Commander {
 	
 	public static Command order(Map<String, Proxy> pxy) {
 		System.out.println("=======5========");
+		
 		Command cmd = null;
 		RequestProxy req = (RequestProxy)pxy.get("req");
 		HttpServletRequest request = req.getRequest();
+		System.out.println(request.getParameter("cmd"));
 		switch (Action.valueOf(request.getParameter("cmd").toUpperCase())) {
 		case MOVE:
 			System.out.println("커멘더들어옴");
@@ -37,6 +39,10 @@ public class Commander {
 			break;
 		case DETAIL_UPDATE:
 			cmd = new UbdateCommand(pxy);
+			break;
+		case CUST_FILE_UPLOAD:
+			cmd = new FileCommand(pxy);
+			break;
 		}
 		
 		System.out.println("커맨더 내부"+Receiver.cmd.getView());

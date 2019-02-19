@@ -19,7 +19,8 @@ public class CustomerController extends HttpServlet {
        
    CustomerService service = CustomerServiceImpl.getInstance();
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		System.out.println("컨트롤러cmd"+request.getParameter("cmd"));
+		
 		System.out.println("======1번=======");
 		Receiver.init(request, response);
 		

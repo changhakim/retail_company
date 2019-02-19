@@ -10,9 +10,12 @@ import java.util.List;
 import java.util.Map;
 
 import domain.CustomerDTO;
+import domain.ImageDTO;
 import enums.CustomerSQL;
+import enums.ImageSQL;
 import enums.Vendor;
 import factory.DatabaseFactory;
+import proxy.ImageProxy;
 import proxy.PageProxy;
 import proxy.Pagination;
 import proxy.Proxy;
@@ -20,7 +23,12 @@ import proxy.Proxy;
 public class CustomerDAOImpl  implements CustomerDAO{
 
 	private static CustomerDAO instance = new CustomerDAOImpl();
-	private CustomerDAOImpl() {}
+	Connection conn;
+	private CustomerDAOImpl() {
+		conn = DatabaseFactory
+				.createDatabase(Vendor.ORACLE)
+				.getConnection();
+	}
 	public static CustomerDAO getInstance() {return instance;}
 
 
@@ -276,6 +284,96 @@ public class CustomerDAOImpl  implements CustomerDAO{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return map;
+	}
+	
+	
+	
+	@Override
+	public Map<String, Object> SelectProfile(Proxy pxy) {
+		
+		CustomerDTO cust = null;
+		ImageDTO img = null;
+		String sql = "";
+		Map<String, Object> map =null;
+		
+		try {
+			
+			
+			ImageProxy ipxy = (ImageProxy) pxy;
+			System.out.println(ipxy.getImg().getImgName()+"다오이미지네임");
+			
+			if(!ImageDAOImpl.getInstance().lastImageSeq().getImgName().equals(ipxy.getImg().getImgName())) { 
+			
+			ImageDAOImpl.getInstance()
+			.insertImage(ipxy.getImg());
+			}
+			System.out.println("ImageDAOImpl.getInstance().lastImageSeq().getImgName()"+ImageDAOImpl.getInstance().lastImageSeq().getImgName());
+			
+			img = ImageDAOImpl.getInstance().lastImageSeq();
+			
+			
+			 sql = "UPDATE CUSTOMERS SET PHOTO = ? WHERE CUSTOMER_ID LIKE ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, img.getImgSeq());
+			ps.setString(2, ipxy.getImg().getOwner());
+			ps.executeUpdate();
+			 
+			
+			sql = ImageSQL.IMG_LAST_RETRIEVE.toString();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, img.getImgSeq());
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				img = new ImageDTO();
+				img.setImgExtention(rs.getString("IMG_EXTENTION"));
+				img.setImgName(rs.getString("IMG_NAME"));
+				img.setOwner(rs.getString("OWNER"));
+			}
+			
+			
+			
+			sql = CustomerSQL.RETRIEVE.toString();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1,ipxy.getImg().getOwner());
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				cust = new CustomerDTO();
+				cust.setAddress(rs.getString("ADDRESS"));
+				cust.setPassword(rs.getString("PASSWORD"));
+				cust.setCustomerID(rs.getString("CUSTOMER_ID"));
+				cust.setCity(rs.getString("CITY"));
+				cust.setPostalCode(rs.getString("POSTALCODE"));
+				cust.setCustomerName(rs.getString("CUSTOMER_NAME"));
+				cust.setPhone(rs.getString("PHONE"));
+				cust.setSsn(rs.getString("SSN"));
+				switch (cust.getSsn().charAt(7)) {
+				case '1': case'3':
+					
+					cust.setGender("남");
+					
+					break;
+				case '2': case'4':
+					cust.setGender("여");
+					break;
+				
+				default:
+					break;
+				}
+				
+			}
+			map = new HashMap<>();
+			map.put("imcust", cust);
+			map.put("cusimg", img);
+			
+			
+
+	
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return map;
 	}
 

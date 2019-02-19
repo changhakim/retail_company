@@ -82,10 +82,12 @@
 
 </div>
 <div class="grid-item update">
-
+<div class= "update_btn1">
 <span id="confirm_btn" class="label label-success" >확인</span>
+</div >
+<div class= "update_btn2">
 <span id="cancel_btn" class="label label-danger" >취소</span>
-
+</div>
 </div>
 
 

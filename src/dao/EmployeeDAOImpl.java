@@ -58,7 +58,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 				
 				list.add(null);
 			}
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -80,7 +80,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 									list.add(null);
 									}
 						
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -101,7 +101,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 						 while(rs.next()) {
 							 
 						 }
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

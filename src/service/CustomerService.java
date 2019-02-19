@@ -19,6 +19,7 @@ public interface CustomerService {
 	
 	
 	public void modifyCustomer(CustomerDTO customer);
+	public Map<String, Object> fileUpload(Proxy pxy);
 	public void removeCustomer(CustomerDTO customer);
 	public Map<String, Object> retrievePhone(Proxy pxy);
 }

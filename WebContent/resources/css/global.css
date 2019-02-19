@@ -146,7 +146,23 @@ li a:hover:not(.active) {
 }
 /* 디테일 수정 =======*/
 .update{
-		  grid-column-start: 1;
-  	  	  grid-column-end: 3;
- 		  height:20px;
+		display: grid;
+
+  		grid-template-columns: auto auto;
+		grid-column-start: 1;
+  	  	grid-column-end: 7;
+  	  	border : 1px solid aqua;
+  	  	
  }
+.update_btn1{
+			  grid-column-start: 1;
+  	  	  	  grid-column-end: 3;
+  	  	  	  
+ 		      height:20px;
+}
+.update_btn2{
+			  grid-column-start: 3;
+  	  	  	  grid-column-end: 7;
+ 		      
+ 		      height:20px;	
+}
