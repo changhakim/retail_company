@@ -63,7 +63,7 @@ public class ExistCommand extends Command {
 			
 			if(!(cus==null)) {
 				
-				session.setAttribute("customer", cus);
+				session.setAttribute("cust", cus);
 			}else {
 				super.setDomain("customer");
 				super.setPage("signin");

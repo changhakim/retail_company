@@ -33,6 +33,7 @@ public class FileCommand extends Command {
 			ipxy.getImg().getOwner();
 			HashMap<String, Object> map = (HashMap<String, Object>) CustomerServiceImpl.getInstance().fileUpload(ipxy);
 			
+			
 			request.setAttribute("image", map.get("cusimg"));
 			request.setAttribute("cust", map.get("imcust"));
 			

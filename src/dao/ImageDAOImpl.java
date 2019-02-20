@@ -80,22 +80,29 @@ public class ImageDAOImpl implements ImageDAO{
 	@Override
 	public ImageDTO selectImage(ImageDTO img) {
 		ImageDTO img1 = null;
+		System.out.println("디티오이미지시퀀스"+img.getImgSeq());
 		try {
-			String sql = "";
+			String sql = ImageSQL.IMG_LAST_RETRIEVE.toString();
 			PreparedStatement ps =  DatabaseFactory
 							.createDatabase(Vendor.ORACLE)
 							.getConnection()
 							.prepareStatement(sql);
+			ps.setString(1, img.getImgSeq());
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
 			img1 = new ImageDTO();
+			img1.setImgExtention(rs.getString("IMG_EXTENTION"));
+			img1.setImgName(rs.getString("IMG_NAME"));
+			img1.setOwner(rs.getString("OWNER"));
 			}
+			System.out.println("이미지DAO이미지이름"+img1.getImgName());
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		System.out.println("이미지DAO이미지이름"+img1.getImgName());
+		return img1;
 	}
 	@Override
 	public ImageDTO lastImageSeq() {

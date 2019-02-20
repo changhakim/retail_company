@@ -10,6 +10,19 @@
 		<a href="#" id="cus_join">회원가입</a><br />
 		<a href="#" id="cus_login">로그인</a>
 		</div> --%>
+		<div class="grid-item" id="navi_bar">
+				<ul class="ul_navi_bar">
+					<li ><a href="home.do">홈으로</a></li>
+					<li ><a href="#">카테고리</a></li>
+					<li ><a href="#">사원</a></li>
+					<li ><a href="#">주문</a></li>
+					<li ><a href="#">상품</a></li>
+					<li ><a href="#">선박</a></li>
+					<li ><a href="#">공급업체</a></li>
+					<li ><a href="${ctx}/customer.do?cmd=cust_retrieve&page=mypage&customer_id=${cust.customerID}">마이페이지</a></li>
+					
+				</ul>
+</div>
 		<div class="row">
       <div class="col-sm-6 col-md-4">
         <div class="thumbnail">

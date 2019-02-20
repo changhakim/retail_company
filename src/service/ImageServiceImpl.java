@@ -35,7 +35,7 @@ public class ImageServiceImpl implements ImageService{
 	@Override
 	public ImageDTO retrieveImage(ImageDTO img) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.selectImage(img);
 	}
 
 }

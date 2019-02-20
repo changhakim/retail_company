@@ -155,6 +155,7 @@ public class CustomerDAOImpl  implements CustomerDAO{
 				cus1.setCustomerName(rs.getString("CUSTOMER_NAME"));
 				cus1.setPhone(rs.getString("PHONE"));
 				cus1.setSsn(rs.getString("SSN"));
+				cus1.setPhoto(rs.getString("PHOTO"));
 				switch (cus1.getSsn().charAt(7)) {
 				case '1': case'3':
 					
@@ -292,76 +293,48 @@ public class CustomerDAOImpl  implements CustomerDAO{
 	@Override
 	public Map<String, Object> SelectProfile(Proxy pxy) {
 		
-		CustomerDTO cust = null;
+		CustomerDTO cust = new CustomerDTO();
 		ImageDTO img = null;
 		String sql = "";
 		Map<String, Object> map =null;
-		
+		ResultSet rs = null;
 		try {
 			
 			
 			ImageProxy ipxy = (ImageProxy) pxy;
-			System.out.println(ipxy.getImg().getImgName()+"다오이미지네임");
+		
 			
-			if(!ImageDAOImpl.getInstance().lastImageSeq().getImgName().equals(ipxy.getImg().getImgName())) { 
 			
 			ImageDAOImpl.getInstance()
 			.insertImage(ipxy.getImg());
-			}
-			System.out.println("ImageDAOImpl.getInstance().lastImageSeq().getImgName()"+ImageDAOImpl.getInstance().lastImageSeq().getImgName());
+			
+			
 			
 			img = ImageDAOImpl.getInstance().lastImageSeq();
 			
 			
-			 sql = "UPDATE CUSTOMERS SET PHOTO = ? WHERE CUSTOMER_ID LIKE ?";
+			sql = "UPDATE CUSTOMERS SET PHOTO = ? WHERE CUSTOMER_ID LIKE ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, img.getImgSeq());
 			ps.setString(2, ipxy.getImg().getOwner());
 			ps.executeUpdate();
 			 
 			
-			sql = ImageSQL.IMG_LAST_RETRIEVE.toString();
+	/*		sql = ImageSQL.IMG_LAST_RETRIEVE.toString();
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, img.getImgSeq());
-			ResultSet rs = ps.executeQuery();
+			rs = ps.executeQuery();
 			while(rs.next()) {
 				img = new ImageDTO();
 				img.setImgExtention(rs.getString("IMG_EXTENTION"));
 				img.setImgName(rs.getString("IMG_NAME"));
 				img.setOwner(rs.getString("OWNER"));
-			}
+			}*/
 			
+			img = ImageDAOImpl.getInstance().selectImage(img);
+			cust.setCustomerID(ipxy.getImg().getOwner());
+			cust = selectCustomer(cust);
 			
-			
-			sql = CustomerSQL.RETRIEVE.toString();
-			ps = conn.prepareStatement(sql);
-			ps.setString(1,ipxy.getImg().getOwner());
-			rs = ps.executeQuery();
-			while(rs.next()) {
-				cust = new CustomerDTO();
-				cust.setAddress(rs.getString("ADDRESS"));
-				cust.setPassword(rs.getString("PASSWORD"));
-				cust.setCustomerID(rs.getString("CUSTOMER_ID"));
-				cust.setCity(rs.getString("CITY"));
-				cust.setPostalCode(rs.getString("POSTALCODE"));
-				cust.setCustomerName(rs.getString("CUSTOMER_NAME"));
-				cust.setPhone(rs.getString("PHONE"));
-				cust.setSsn(rs.getString("SSN"));
-				switch (cust.getSsn().charAt(7)) {
-				case '1': case'3':
-					
-					cust.setGender("남");
-					
-					break;
-				case '2': case'4':
-					cust.setGender("여");
-					break;
-				
-				default:
-					break;
-				}
-				
-			}
 			map = new HashMap<>();
 			map.put("imcust", cust);
 			map.put("cusimg", img);
