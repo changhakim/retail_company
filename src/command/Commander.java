@@ -23,25 +23,30 @@ public class Commander {
 			System.out.println("커멘더들어옴");
 			cmd = new Command(pxy);
 			break;
-		case REGISTER : case CUSREGISTER :
+		case REGISTER : case CUSREGISTER : case PRODUCT_REGISTER:
+			
 			cmd = new CreateCommand(pxy);
 			break;
 		
 		case ACCESS : case CUSACCESS :
-			System.out.println("커맨더ACCESS들어옴");
+			
 			cmd = new ExistCommand(pxy);
 			break;
-		case CUST_LIST:
+		case CUST_LIST:case PRODUCT_LIST:
 			cmd = new ListCommand(pxy);
 		break;
-		case CUST_RETRIEVE:
+		case CUST_RETRIEVE:case PRODUCT_RETRIEVE:
 			cmd = new RetrieveCommand(pxy);
 			break;
-		case DETAIL_UPDATE:
+		case DETAIL_UPDATE:case PRODUCT_UPDATE:
 			cmd = new UbdateCommand(pxy);
 			break;
 		case CUST_FILE_UPLOAD:
 			cmd = new FileCommand(pxy);
+			break;
+		case CUST_DELETE:case PRODUCT_DELETE:
+			System.out.println("커맨더 딜리트");
+			cmd = new DeleteCommand(pxy);
 			break;
 		}
 		

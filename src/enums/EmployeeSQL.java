@@ -16,7 +16,7 @@ public enum EmployeeSQL {
 		switch (this) {
 		case REGISTER:
 			query.append("INSERT INTO EMPLOYEES(EMPLOYEE_ID,MANAGER,NAME,BIRTH_DATE,PHOTO,NOTES) VALUES("
-					+ "EMPLOYEE_ID.NEXTVAL,?,?,?,?,?)");
+					+ "EMPLOYEE_ID.NEXTVAL,?,?,?,1000,?)");
 			break;
 
 		case ACCESS:

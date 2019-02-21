@@ -1,7 +1,7 @@
 package enums;
 
 public enum CustomerSQL {
-	CUSREGISTER,CUSACCESS,LIST,COUNT,PHONE,RETRIEVE,UPDATE;
+	CUSREGISTER,CUSACCESS,LIST,COUNT,PHONE,RETRIEVE,UPDATE, CUS_DELETE;
 	
 	@Override
 	public String toString() {
@@ -44,6 +44,9 @@ public enum CustomerSQL {
 					" ADDRESS = ?,\n" + 
 					" POSTALCODE = ?\n" + 
 					" WHERE CUSTOMER_ID LIKE ?");
+			break;
+		case CUS_DELETE:
+			query.append("DELETE FROM CUSTOMERS WHERE CUSTOMER_ID LIKE ?");
 			break;
 			
 		default:

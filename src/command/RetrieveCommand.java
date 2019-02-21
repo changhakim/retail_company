@@ -7,12 +7,14 @@ import javax.servlet.http.HttpSession;
 
 import domain.CustomerDTO;
 import domain.ImageDTO;
+import domain.ProductDTO;
 import enums.Action;
 import proxy.ImageProxy;
 import proxy.Proxy;
 import proxy.RequestProxy;
 import service.CustomerServiceImpl;
 import service.ImageServiceImpl;
+import service.ProductServiceImpl;
 
 public class RetrieveCommand extends Command{
 
@@ -37,7 +39,11 @@ public class RetrieveCommand extends Command{
 			request.setAttribute("cust", cus);
 			request.setAttribute("image", img);
 			break;
-
+		case PRODUCT_RETRIEVE:
+			ProductDTO pro = new ProductDTO();
+			pro.setProductID(request.getParameter("product_id"));
+			ProductServiceImpl.getInstance().retrieveProduct(pro);
+		
 		default:
 			break;
 		}

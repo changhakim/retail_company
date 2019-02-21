@@ -5,33 +5,36 @@
 <jsp:include page="../home/top.jsp"/>
 <link rel="stylesheet" href="${css}/customer/mypage.css" />
 <div class="grid-item" id="navi_bar">
-				<ul class="ul_navi_bar">
-					<li ><a href="home.do">홈으로</a></li>
-					<li ><a href="#">카테고리</a></li>
-					<li ><a href="#">사원</a></li>
-					<li ><a href="#">주문</a></li>
-					<li ><a href="#">상품</a></li>
-					<li ><a href="#">선박</a></li>
-					<li ><a href="#">공급업체</a></li>
+				
+				<div class="new_navi_bar grid-item">
+					<div id="li_navi1"><a href="home.do">홈으로</a></div>
+					<div id="li_navi2"><a href="#">카테고리</a></div>
+					<div id="li_navi3"><a href="#">사원</a></div>
+					<div id="li_navi4"><a href="#">주문</a></div>
+					<div id="li_navi5"><a href="#">상품</a></div>
+					<div id="li_navi6"><a href="#">선박</a></div>
+					<div id="li_navi7"><a href="#">공급업체</a></div>
 					
-				</ul>
+					</div>
+					
+				
 </div>
 <div class="grid-item" id= "side_bar">
 
-	<div class= "myphoto">
 	
-	<div class= "myphotoin">
+	
+	
 	<form id="file_form">
-		<img id="dimg"  style="height: 200px; width: 100%; ">
+		<img id="dimg"  style="height: 200px; width: 50%; ">
 		<input type="file" name="file_upload" />
 		<input type="submit" id="file_upload_btn" />
 		<input type="hidden" name="cmd" value="cust_file_upload" />
 		<input type="hidden" name="page" value="detail" />
 	</form>
-	</div>
+	
 	
 	</div>
-</div>
+
 	<div class="grid-item" id= "content">
 
 
@@ -57,11 +60,14 @@
 
 </div>
 <div class="grid-item update">
-<div class= "update_btn1">
+<div id= "update_btn1">
 <span id="photo_btn" class="label label-danger" >사진수정</span>
 </div>
-<div class= "update_btn2">
+<div id= "update_btn2">
 <span id="update_btn" class="label label-warning" >정보수정</span>
+</div>
+<div id= "delete_btn">
+<span id="fire_btn" class="label label-warning" >회원탈퇴</span>
 </div>
 
 
@@ -84,6 +90,11 @@ $('#update_btn').click(function(){
 	alert('버튼클릭');
 	location.assign('${ctx}/customer.do?cmd=cust_retrieve&page=update&customer_id=${cust.customerID}');
 });
+$('#delete_btn').click(function(){
+	
+	alert('버튼클릭');
+	location.assign('${ctx}/customer.do?dir=home&cmd=cust_delete&page=main&customer_id=${cust.customerID}');
+});
 
 
 $('#file_upload_btn').attr('style','cursor:pointer').click(function(){
@@ -92,10 +103,8 @@ $('#file_upload_btn').attr('style','cursor:pointer').click(function(){
 	.attr('action','${ctx}/customer.do?cmd=cust_file_upload&page=detail&customer_id=${cust.customerID}')
 	.attr('enctype','multipart/form-data')
 	.submit();
-
-	
-	
 });
+
 
 </script>				   
 				   

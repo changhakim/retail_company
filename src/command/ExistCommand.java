@@ -4,18 +4,19 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import domain.CustomerDTO;
 import domain.EmployeeDTO;
+import domain.ImageDTO;
 import enums.Action;
+import proxy.PageProxy;
 import proxy.Pagination;
 import proxy.Proxy;
 import proxy.RequestProxy;
-import proxy.PageProxy;
 import service.CustomerServiceImpl;
 import service.EmployeeServiceImpl;
+import service.ImageServiceImpl;
 
 public class ExistCommand extends Command {
 
@@ -61,9 +62,13 @@ public class ExistCommand extends Command {
 			cus.setPassword(request.getParameter("password"));
 			cus = CustomerServiceImpl.getInstance().retrieveCustomer(cus);
 			
+			
 			if(!(cus==null)) {
-				
+				ImageDTO img = new ImageDTO();
+				img.setImgSeq(cus.getPhoto());
+				img = ImageServiceImpl.getInstance().retrieveImage(img);
 				session.setAttribute("cust", cus);
+				request.setAttribute("image", img);
 			}else {
 				super.setDomain("customer");
 				super.setPage("signin");

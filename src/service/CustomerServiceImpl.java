@@ -70,7 +70,7 @@ public class CustomerServiceImpl implements CustomerService{
 
 	@Override
 	public void removeCustomer(CustomerDTO customer) {
-		// TODO Auto-generated method stub
+		dao.deleteCustomer(customer);
 		
 	}
 	@Override

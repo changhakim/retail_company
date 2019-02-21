@@ -5,20 +5,13 @@
 	<jsp:include page="../home/top.jsp"/>
 	
 	
-	<div class="grid-item" id= "catecontent">
+	<div class ="grid-item"id="catecontent">
+	
 	<h1 id="title">회원 전용 시스템</h1>
-	<form id="access_form" >
+	
 	<div id="register-container">
-
-	
-
-	
-	
-	
-
-    
-	
- 	  <div class="input-group input-group-lg">
+	<form id="access_form" >
+	<div class="input-group input-group-lg">
 	  <span class="input-group-addon" id="sizing-addon3">아이디</span>
 	  <input type="text" class="form-control" placeholder="아이디를 입력하세요" aria-describedby="sizing-addon3" id="cusID" name="cusID" value="hoho">
       </div>
@@ -38,10 +31,11 @@
 	<input type="hidden" name="dir" value="category" />
 	<input type="hidden" name="page" value="main" />
 	
-		
-	</div>
 	</form>
 	</div>
+	
+	</div>
+	
 	<jsp:include page="../home/bottom.jsp"/>			
 	<script>
 	$('#confirm_btn').click(function(){

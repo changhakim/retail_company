@@ -5,17 +5,19 @@
 <jsp:include page="../home/top.jsp"/>
 <link rel="stylesheet" href="${css}/customer/customer_list.css" />
 <div class="grid-item" id="navi_bar">
-<ul class="ul_navi_bar">
+				
+				<div class="new_navi_bar grid-item">
+					<div id="li_navi1"><a href="home.do">홈으로</a></div>
+					<div id="li_navi2"><a href="#">카테고리</a></div>
+					<div id="li_navi3"><a href="#">사원</a></div>
+					<div id="li_navi4"><a href="#">주문</a></div>
+					<div id="li_navi5"><a href="#">상품</a></div>
+					<div id="li_navi6"><a href="#">선박</a></div>
+					<div id="li_navi7"><a href="#">공급업체</a></div>
 					
-					<li ><a href="home.do">홈으로</a></li>
-					<li ><a href="#">카테고리</a></li>
-					<li ><a href="#">사원</a></li>
-					<li ><a href="#">주문</a></li>
-					<li ><a href="#">상품</a></li>
-					<li ><a href="#">선박</a></li>
-					<li ><a href="#">공급업체</a></li>
+					</div>
 					
-				</ul>
+				
 </div>
 <div class="grid-item" id="side_bar">
 <h1>고객목록</h1>
@@ -89,10 +91,10 @@ $('.pagec').each(function(index){
 $(this).click(function(){
 		location.assign('${ctx}/customer.do?cmd=cust_list&page=customer_list&page_size=5&page_num='+$(this).text())
 	});
-$('.prev').click(function(){
-	
-	
-})
+
+$('#li_navi5').click(function(){
+	location.assign('${ctx}/product.do?&cmd=product_list&page=product_list&page_size=5');
+});
 	
 	
 	// page_num,pageSize,cmd,dir,page

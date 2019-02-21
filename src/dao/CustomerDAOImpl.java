@@ -255,7 +255,15 @@ public class CustomerDAOImpl  implements CustomerDAO{
 
 	@Override
 	public void deleteCustomer(CustomerDTO customer) {
-		// TODO Auto-generated method stub
+		try {
+			String sql = CustomerSQL.CUS_DELETE.toString();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, customer.getCustomerID());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	@Override
