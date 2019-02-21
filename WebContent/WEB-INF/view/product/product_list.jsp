@@ -59,7 +59,7 @@
     <td>${pro.price}</td>
     <td>
     	<div id= "update">
-		<span id="pro_btn" class="label label-danger"><a href="${ctx}/product.do?cmd=product_retrieve&page=product_list&product_id=${pro.productID}">수정</a></span>
+		<span id="pro_btn" class="label label-danger"><a href="${ctx}/product.do?cmd=product_retrieve&page=product_update&product_id=${pro.productID}">수정</a></span>
 		</div>
 	</td>
     <td>
