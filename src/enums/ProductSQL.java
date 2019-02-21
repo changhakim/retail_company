@@ -1,7 +1,7 @@
 package enums;
 
 public enum ProductSQL {
-	LIST, REGISTER, DELETE, COUNT;
+	LIST, REGISTER, DELETE, COUNT, RETRIEVE, UPDATE;
 	@Override
 	public String toString() {
 		StringBuffer query = new StringBuffer();
@@ -23,6 +23,15 @@ public enum ProductSQL {
 			break;
 		case COUNT:
 			query.append("SELECT COUNT(*) TOTAL FROM PRODUCTS");
+			break;
+		case RETRIEVE:
+			query.append("SELECT * FROM PRODUCTS WHERE PRODUCT_ID LIKE ?");
+			break;
+		case UPDATE:
+			query.append("UPDATE PRODUCTS SET PRODUCT_NAME  = ?,\n" + 
+												"UNIT = ?,\n" + 
+												"PRICE = ?\n" + 
+						"WHERE PRODUCT_ID LIKE ?");
 			break;
 		default:
 			break;

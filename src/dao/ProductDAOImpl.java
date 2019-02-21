@@ -69,6 +69,7 @@ public class ProductDAOImpl implements ProductDAO{
 			pro.setProductID(rs.getString("PRODUCT_ID"));
 			pro.setProductName(rs.getString("PRODUCT_NAME"));
 			pro.setSupplierID(rs.getString("SUPPLIER_ID"));
+			pro.setPhoto(rs.getString("PHOTO"));
 			pro.setUnit(rs.getString("UNIT"));
 			pro.setPrice(rs.getString("PRICE"));
 			list.add(pro);
@@ -91,8 +92,27 @@ public class ProductDAOImpl implements ProductDAO{
 
 	@Override
 	public ProductDTO selectProduct(ProductDTO pro) {
-		// TODO Auto-generated method stub
-		return null;
+		ProductDTO pro1 = new ProductDTO();
+		System.out.println("프로덕트 디에이오"+pro.getProductID());
+		try {
+			String sql = ProductSQL.RETRIEVE.toString();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1,pro.getProductID());
+			ResultSet rs =  ps.executeQuery();
+			while(rs.next()) {
+				pro1.setCategoryID(rs.getString("CATEGORY_ID"));
+				pro1.setProductID(rs.getString("PRODUCT_ID"));
+				pro1.setProductName(rs.getString("PRODUCT_NAME"));
+				pro1.setSupplierID(rs.getString("SUPPLIER_ID"));
+				pro1.setPhoto(rs.getString("PHOTO"));
+				pro1.setUnit(rs.getString("UNIT"));
+				pro1.setPrice(rs.getString("PRICE"));
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return pro1;
 	}
 
 	@Override
@@ -121,7 +141,18 @@ public class ProductDAOImpl implements ProductDAO{
 
 	@Override
 	public void updateProduct(ProductDTO pro) {
-		// TODO Auto-generated method stub
+		try {
+			String sql = ProductSQL.UPDATE.toString();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1,pro.getProductName());
+			ps.setString(2,pro.getUnit());
+			ps.setString(3,pro.getPrice());
+			ps.setString(4,pro.getProductID());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 

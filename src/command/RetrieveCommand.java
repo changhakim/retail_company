@@ -42,8 +42,14 @@ public class RetrieveCommand extends Command{
 		case PRODUCT_RETRIEVE:
 			ProductDTO pro = new ProductDTO();
 			pro.setProductID(request.getParameter("product_id"));
-			ProductServiceImpl.getInstance().retrieveProduct(pro);
-		
+			pro=ProductServiceImpl.getInstance().retrieveProduct(pro);
+			img = new ImageDTO();
+			img.setImgSeq(pro.getPhoto());
+			img = ImageServiceImpl.getInstance().retrieveImage(img);
+			request.setAttribute("pro", pro);
+			request.setAttribute("image", img);
+			System.out.println("리트리버커맨드 끝");
+			break;
 		default:
 			break;
 		}

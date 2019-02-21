@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <jsp:include page="../home/top.jsp"/>
@@ -90,7 +89,7 @@ $(function(){
 $('#update_btn').click(function(){
 	
 	alert('버튼클릭');
-	location.assign('${ctx}/customer.do?cmd=cust_retrieve&page=update&customer_id=${cust.customerID}');
+	location.assign('${ctx}/product.do?cmd=product_retrieve&page=product_update&product_id=${pro.productID}');
 });
 
 

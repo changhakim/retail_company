@@ -6,6 +6,7 @@ public @Data class ProductDTO {
 				   supplierID,
 				   categoryID,
 				   unit,
+				   photo,
 				   price;
 
 

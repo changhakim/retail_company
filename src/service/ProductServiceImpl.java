@@ -54,7 +54,7 @@ public class ProductServiceImpl implements ProductService{
 
 	@Override
 	public void modifyProduct(ProductDTO pro) {
-		// TODO Auto-generated method stub
+		dao.updateProduct(pro);
 		
 	}
 

@@ -54,27 +54,23 @@
 		</div> --%>
 	<form id="update_form">
 	<div class="mypage">
-	<div class="mypage1">아이디</div>
-	<div class="mypage2">${cust.customerID}</div>
-	<div class="mypage1">이름</div>
-	<div class="mypage2">${cust.customerName}</div>
-	<div class="mypage1">생년월일</div>
-	<div class="mypage2">${cust.ssn}</div>
-	<div class="mypage1">성별</div>
-	<div class="mypage2">${cust.gender}</div>
-	<div class="mypage1">전화번호</div>
-	<div class="mypage2"><input type="text" id="phone" name="phone" placeholder="${cust.phone}" /></div>
-	<div class="mypage1">주소</div>
-	<div class="mypage2"><input type="text" id="city" name="city" placeholder="${cust.city}" /></div>
-	<div class="mypage1">상세주소</div>
-	<div class="mypage2"><input type="text" id="address" name="address" placeholder="${cust.address}"/></div>
-	<div class="mypage1">우편번호</div>
-	<div class="mypage2"><input type="text" id="postal_code" name="postal_code" placeholder="${cust.postalCode}"/></div>
-	<div class="mypage1">임시비밀번호</div>
-	<div class="mypage2"><input type="text" id="password" name="password" placeholder="임시비밀번호" /></div>
+	<div class="mypage1">제품번호</div>
+	<div class="mypage2">${pro.productID}</div>
+	<div class="mypage1">상품이름</div>
+	<div class="mypage2"><input type="text" id="product_name" name="product_name" placeholder="${pro.productName}"/></div>
+	<div class="mypage1">담당자아이디</div>
+	<div class="mypage2">${pro.supplierID}</div>
+	<div class="mypage1">카테고리아이디</div>
+	<div class="mypage2">${pro.categoryID}</div>
+	<div class="mypage1">재고</div>
+	<div class="mypage2"><input type="text" id="unit" name="unit" placeholder="${pro.unit}" /></div>
+	<div class="mypage1">가격</div>
+	<div class="mypage2"><input type="text" id="price" name="price" placeholder="${pro.price}" /></div>
+	
+	
 	<input type="hidden" name="cmd"  value="product_update"/><br />
-	<input type="hidden" name="page" value="product_list"/>
-	<input type="hidden" name="customer_id" value="${cust.customerID}" />
+	<input type="hidden" name="page" value="product_detail"/>
+	<input type="hidden" name="product_id" value="${pro.productID}" />
 	
 </div>
 </form>

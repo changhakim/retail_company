@@ -52,7 +52,7 @@
 				   unit,
 				   price; -->
    	<td>${pro.productID}</td>
-    <td><a href="${ctx}/product.do?cmd=product_retrieve&page=product_detail&product_id=${pro.productName}">${pro.productName}</a></td>
+    <td><a href="${ctx}/product.do?cmd=product_retrieve&page=product_detail&product_id=${pro.productID}">${pro.productName}</a></td>
     <td>${pro.supplierID}</td>
     <td>${pro.categoryID}</td>
     <td>${pro.unit}</td>
