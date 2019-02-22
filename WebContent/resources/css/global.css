@@ -24,16 +24,7 @@
     font-size:50px;
     font-family: 'Cute Font', cursive;
 }
-#navi_bar {
-    grid-column-start: 1;
-    grid-column-end: 7;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    font-family: 'Jua', sans-serif;
 
-    
-    
-}
 #item3 {
     grid-column-start: 3;
     grid-column-end: 7;
@@ -79,42 +70,24 @@ font-family: 'Hi Melody', cursive;
   grid-column-end: 7;
   font-family: 'Cute Font', cursive;
 }
-/*카테고리 메인*/
+
 /* 네비바===================== */
-.ul_navi_bar{
-            
-        	list-style-type: none;
-        	margin: 0;
-       	 	padding: 0;
-        	width: 600px;
-        
-        
-        }
-.ul_navi_bar li{
-float: left;
+
+#navi_bar {
+    
+    grid-column-start: 1;
+    grid-column-end: 7;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-family: 'Jua', sans-serif;
+    display: grid;
+  	grid-template-columns: auto;
+    
+
+    
+    
 }
-.ul_navi_bar li a {
-  
-  display: block;
- 
-  padding: 8px 16px;
-  text-align: center;
-  overflow: hidden;
-  text-decoration: none;
-  font-size: 15px;
-}
-.ul_navi_bar li a:hover {
-  background-color: #555;
-  color: white;
-}
-li a.active {
-  background-color: #4CAF50;
-  color: white;
-}
-li a:hover:not(.active) {
-  background-color: #555;
-  color: white;
-}
+
 .new_navi_bar{
 	display: grid;
   	grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto ;
@@ -124,13 +97,7 @@ li a:hover:not(.active) {
   	  grid-column-end: 14;
 }
 /* 카테고리메인===================== */
-#catecontent {
-      grid-column-start: 1;
-      grid-column-end: 7;
-      font-size: 20px;
-      font-family: 'Hi Melody', cursive;
-    
-}
+
 
 
 .catemain{
@@ -138,25 +105,15 @@ li a:hover:not(.active) {
       grid-column-end: 7;
       font-size: 20px;
       font-family: 'Hi Melody', cursive;
-      
+      display: grid;
+  	grid-template-columns: auto auto auto;
     
 }
-#catemainin{
-	display: grid;
-  	grid-template-columns: auto auto auto auto auto auto;
+#catecontent{
+	      grid-column-start: 1;
+      	  grid-column-end: 7;
 }
-#cate1{
-	 grid-column-start: 1;
-     grid-column-end: 3;
-}
-#cate2{
-      grid-column-start: 3;
-      grid-column-end: 5;	
-}
-#cate3{
-      grid-column-start: 5;
-      grid-column-end: 7;	
-}
+
 /* 디테일 수정 =======*/
 .update{
         display: grid;

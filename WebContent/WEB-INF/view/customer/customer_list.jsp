@@ -8,7 +8,7 @@
 				
 				<div class="new_navi_bar grid-item">
 					<div id="li_navi1"><a href="home.do">홈으로</a></div>
-					<div id="li_navi2"><a href="#">카테고리</a></div>
+					<div id="li_navi2"><a id="category" href="#">카테고리</a></div>
 					<div id="li_navi3"><a href="#">사원</a></div>
 					<div id="li_navi4"><a href="#">주문</a></div>
 					<div id="li_navi5"><a href="#">상품</a></div>
@@ -101,6 +101,9 @@ $('#li_navi5').click(function(){
 	// ?cmd=list&page=list&page_num=2&page_size=5
 
 });
-
+$('#category').click(function(){
+	
+	location.assign('${ctx}/category.do?&cmd=category_list&page=list');
+});
 </script>
     

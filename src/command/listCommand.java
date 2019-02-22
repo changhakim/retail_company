@@ -12,6 +12,7 @@ import proxy.PageProxy;
 import proxy.Pagination;
 import proxy.Proxy;
 import proxy.RequestProxy;
+import service.CategoryServiceImpl;
 import service.CustomerServiceImpl;
 import service.ProductServiceImpl;
 
@@ -20,35 +21,33 @@ public ListCommand(Map<String, Proxy> pxy) {
 	super(pxy);
 	RequestProxy req = (RequestProxy)pxy.get("req");
 	HttpServletRequest request = req.getRequest();
-	Proxy paging = null;
-	Proxy pagePxy = null;
-	
+	Proxy paging = new Pagination();
+		  paging.carryOut(request);
+	Proxy pagePxy = new PageProxy();
+		  pagePxy.carryOut(paging);
+	List<?> list = null;	  
 	
 	switch(Action.valueOf(request.getParameter("cmd").toUpperCase())) {
 	case CUST_LIST:
-		paging = new Pagination();
-		paging.carryOut(request);
-		pagePxy = new PageProxy();
-		pagePxy.carryOut(paging);
-		List<CustomerDTO> list = CustomerServiceImpl.getInstance().bringCustomerList(pagePxy);
-		request.setAttribute("list", list);
-		request.setAttribute("pagination", paging);
+
+		list = CustomerServiceImpl.getInstance().bringCustomerList(pagePxy);
+		
 		
 		break;
 	case PRODUCT_LIST:
-		paging = new Pagination();
-		paging.carryOut(request);
-		pagePxy = new PageProxy();
-		pagePxy.carryOut(paging);
-		List<ProductDTO> list1 = ProductServiceImpl.getInstance().bringProductList(pagePxy);
-		request.setAttribute("list", list1);
-		request.setAttribute("pagination", paging);
+		list =	ProductServiceImpl.getInstance().bringProductList(pagePxy);
+
+		break;
+	case CATEGORY_LIST:
+		list = CategoryServiceImpl.getInstance().bringCategoryList(pagePxy);
 		
+		break;
 		default:
 		break;
 	}
 
-
+	request.setAttribute("list", list);
+	request.setAttribute("pagination", paging);
 }
 
 }
