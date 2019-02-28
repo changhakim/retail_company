@@ -49,7 +49,7 @@ $('#cus_login').click(function(){
 });
 $('#oop_access').click(function(){
 	/* app.main(); */
-	inherit.main();
+	test2.main();
 });
 $('#algo_access').click(function(){
 	/* app.main(); */

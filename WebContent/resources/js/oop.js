@@ -1,4 +1,101 @@
 
+var test1 = (()=>{
+	return{
+		main : ()=>{
+		
+		var food = new Food('cheese',100);
+		alert(food.name+','+food.price+','+food.category);
+		alert(new Product.name);
+		
+			
+			
+		}
+	}
+	
+})();
+
+
+
+
+var test =(()=>{
+	let main = ()=>{
+		let food = new Food('cheese',5);
+		alert(food.category);
+		alert(food.name);
+	}
+	return {main:main};
+})();
+
+
+
+function Product(name,price){
+	this.name = name;
+	this.price = price;
+	
+}
+function Food(name,price){
+	Product.call(this,name,price);
+	this.category = 'food';
+}
+
+
+
+
+
+
+function People(name,age,gender,job){
+	this.name = name;
+	this.age = age;
+	this.gender = gender;
+	this.job = job;
+}
+//선언만 해줌 
+People.prototype.setName = name=>{this.name = name;};
+People.prototype.setAge = age=>{this.age = age;};
+People.prototype.setGender = gender=>{this.gender = gender;};
+People.prototype.setJob = job=>{this.job = job;};
+People.prototype.getName =()=>{return this.name;};
+People.prototype.getAge =()=>{return this.age;};
+People.prototype.getGender =()=>{return this.gender;};
+People.prototype.getJob =()=>{return this.job;};
+//실행이되면 선언이 된게 만들어짐 스크립트는 프라이빗이라 접근자체가 되지않지만 프로토타입은 열려있다.
+
+function Customer(grade,custNo){
+	People.apply(this,arguments);
+	this.grade = grade;
+	this.custNo = custNo;
+}
+Customer.prototype = new People();
+Customer.prototype.setName = name=>{
+	//this.name='[닉네임]'+name 이건 자바문법
+	Object.getPrototypeOf(Customer.prototype).setName('[닉네임]'+name);
+	};
+Customer.prototype.setGrade = grade=>{this.grade = grade;};
+Customer.prototype.setCustNo = custNo=>{this.custNo = custNo;};
+Customer.prototype.getGrade =()=>{return this.grade;};
+Customer.prototype.getCustNo =()=>{return this.custNo;};
+
+var test2 ={main:function(){
+		let customer = new Customer();
+		customer.setName('홍길동');
+		customer.setAge('25세');
+		customer.setGender('남');
+		customer.setJob('개발자');
+		customer.setGrade('3급');
+		customer.setCustNo('123');
+		alert('고객정보:'+customer.getName()+','
+				+customer.getAge()+','
+				+customer.getGender()+','
+				+customer.getJob()+','
+				+customer.getGrade()+','
+				+customer.getCustNo())
+	}};
+	
+
+
+
+
+
 var inherit = (()=>{
 	return{
 		main : ()=>{
@@ -16,6 +113,7 @@ var inherit = (()=>{
 	}
 	};
 })();
+
 function Employee(){
 	let _salary, _position;
 
@@ -26,7 +124,7 @@ function Employee(){
 	};
 };
 //상속
-function Customer(){
+function Customer1(){
 	let _custNo, _grade;
 
 	return {
@@ -49,6 +147,14 @@ var app = (()=>{
 	}
 	return {main:main};
 })();
+
+
+
+
+
+
+
+
 var person = (()=>{
 	var _name,_age,_gender,_job;
 	var setName = (name)=>{this._name = name;}
